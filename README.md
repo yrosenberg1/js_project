@@ -10,7 +10,7 @@ Make a data visualization project of MLB statistics.
 * It allows you to see a players stats by splits, such as home and away, or against pitching hand.
 * It allows users to also select the specific stats to view. 
 
-https://wireframe.cc/fjjM9z
+![wireframe](https://github.com/yrosenberg1/js_project/blob/main/src/images/Capture.PNG)
 
 # Technologies
 
