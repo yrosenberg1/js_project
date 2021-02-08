@@ -17,12 +17,12 @@ Make a data visualization project of MLB statistics.
 There are a plethora websites to gather data from. The ones I plan to use are primarily [Baseball Reference](https://www.baseball-reference.com/) and [Baseball Savant](https://baseballsavant.mlb.com/) for gathering data. 
 
 I will be using vanilla JS, to select the data and to search by criteria.
-I will also need D3 to render the data in a visual chart.
+I will also need to use D3 to render the data in a visual chart.
 
 # Implementation
 
-Day 1: Render the chart format for by percentile and by leage leaders using D3.
-Day 2: Add the data, and organize it by percentile and league rankings.
-Day 3: Add search function for by season, player name, team.
-Day 4: Toggle graphs function for by percentile and by league rankings.  
-Day 5: Finish up, debug, finish styling.
+* Day 1: Render the chart format for by percentile and by leage leaders using D3.
+* Day 2: Add the data, and organize it by percentile and league rankings.
+* Day 3: Add search function for by season, player name, team.
+* Day 4: Toggle graphs function for by percentile and by league rankings.  
+* Day 5: Finish up, debug, finish styling.
