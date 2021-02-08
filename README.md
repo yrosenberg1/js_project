@@ -11,3 +11,17 @@ Make a data visualization project of MLB statistics.
 * It allows users to also select the specific stats to view. 
 
 https://wireframe.cc/fjjM9z
+
+# Technologies
+
+There are a plethora websites to gather data from. The ones I plan to use are primarily [Baseball Reference](https://www.baseball-reference.com/) and [Baseball Savant](https://baseballsavant.mlb.com/) for gathering data. 
+
+I will be using vanilla JS, to select the data and to search by criteria.
+I will also need D3 to render the data in a visual chart.
+
+# Implementation
+
+Day 1-2: Render the chart format using D3.
+Day 3: add the data, and connect it to the chart.
+Day 4-5: add the selectors of player, season or team.
+
