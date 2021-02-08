@@ -21,8 +21,7 @@ I will also need to use D3 to render the data in a visual chart.
 
 # Implementation
 
-* Day 1: Render the chart format for by percentile and by leage leaders using D3.
-* Day 2: Add the data, and organize it by percentile and league rankings.
-* Day 3: Add search function for by season, player name, team.
-* Day 4: Toggle graphs function for by percentile and by league rankings.  
+* Days 1-2: Render the chart format for by percentile and by leage leaders using D3.
+* Day 3: Add the data, and organize it by percentile and league rankings.
+* Day 4: Add search function for by season, player name, team. Toggle graphs function for by percentile and by league rankings.  
 * Day 5: Finish up, debug, finish styling.
