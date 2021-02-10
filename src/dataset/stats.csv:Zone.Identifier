@@ -1,0 +1,4 @@
+[ZoneTransfer]
+ZoneId=3
+ReferrerUrl=https://baseballsavant.mlb.com/leaderboard/custom?year=2020&type=batter&filter=&sort=4&sortDir=desc&min=50&selections=xba,xslg,xwoba,xobp,xiso,exit_velocity_avg,launch_angle_avg,barrel_batted_rate,&chart=false&x=xba&y=xba&r=no&chartType=beeswarm
+HostUrl=https://baseballsavant.mlb.com/leaderboard/custom?year=2020&type=batter&filter=&sort=4&sortDir=desc&min=50&selections=xba,xslg,xwoba,xobp,xiso,exit_velocity_avg,launch_angle_avg,barrel_batted_rate,&chart=false&x=xba&y=xba&r=no&chartType=beeswarm&csv=true

@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack-dev-server --config webpack.dev.js",
+    "start": "webpack-dev-server  --watch --config webpack.dev.js && NODE_ENV=development",
     "webpack:watch": "webpack --watch --config webpack.dev.js",
     "webpack:build": "webpack --config webpack.prod.js  --optimize-minimize"
   },
@@ -14,8 +14,7 @@
     "> 1%",
     "maintained node versions",
     "not dead"
-],
-
+  ],
   "author": "",
   "license": "ISC",
   "devDependencies": {
@@ -37,5 +36,8 @@
     "webpack-cli": "^3.3.12",
     "webpack-dev-server": "^3.11.0",
     "webpack-merge": "^4.2.2"
+  },
+  "dependencies": {
+    "d3": "^6.5.0"
   }
 }
