@@ -13,7 +13,9 @@ const svg = select('svg')
 
 const width = +svg.attr('width');
 const height = +svg.attr('height');
+
 search.then(playerStats =>{
+    debugger
     console.log("playerStats")
     console.log(playerStats)
     render(playerStats)

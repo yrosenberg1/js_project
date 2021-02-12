@@ -4,9 +4,21 @@ body{
 }
 
 rect {
-    fill:blueviolet
+    fill: steelblue
 }
 
 text{
     font-size: 16px;
+}
+
+table tr td {
+    border: 1px solid black;
+   
+}
+
+th {
+    border: black 1px solid;
+}
+#stats-table{
+    border-collapse: collapse;
 }
