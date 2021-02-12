@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack-dev-server  --watch --config webpack.dev.js && NODE_ENV=development",
     "webpack:watch": "webpack --watch --config webpack.dev.js",
-    "webpack:build": "webpack --config webpack.prod.js  --optimize-minimize"
+    "webpack:build": "webpack --config webpack.prod.js  --optimize-minimize && NODE_ENV=production"
   },
   "browserslist": [
     "last 1 version",
