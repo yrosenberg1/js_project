@@ -1,12 +1,4 @@
-body {
-  margin: 0px;
-  overflow: hidden; }
-
-rect {
-  fill: blueviolet; }
-
-text {
-  font-size: 16px; }
+body{margin:0px;overflow:hidden}rect{fill:steelblue}text{font-size:16px}table tr td{border:1px solid black}th{border:black 1px solid}#stats-table{border-collapse:collapse}
 
 
-/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9zcmMvc3R5bGVzL2luZGV4LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7QUFDQTtBQUNBLG1CQUFtQjs7QUFFbkI7QUFDQSxtQkFBbUI7O0FBRW5CO0FBQ0Esa0JBQWtCIiwiZmlsZSI6Im1haW4uY3NzIiwic291cmNlc0NvbnRlbnQiOlsiYm9keSB7XG4gIG1hcmdpbjogMHB4O1xuICBvdmVyZmxvdzogaGlkZGVuOyB9XG5cbnJlY3Qge1xuICBmaWxsOiBibHVldmlvbGV0OyB9XG5cbnRleHQge1xuICBmb250LXNpemU6IDE2cHg7IH1cbiJdLCJzb3VyY2VSb290IjoiIn0=*/
+/*# sourceMappingURL=main.css.map*/
