@@ -1,6 +1,7 @@
 import { csv, select, scaleLinear, max, scaleBand, axisLeft, axisBottom  } from "d3";
- 
+ import "./styles/reset.scss";
 import "./styles/index.scss";
+import "./styles/search.scss";
 import * as d3 from 'd3';
 import playerData from "./scripts/search";
 
@@ -26,7 +27,7 @@ const margin = {left: 30, top: 20, right: 100, bottom: 50}
 //     render(playerStats)
 // })
 
-const render = data => {
+const update = data => {
     //  
    const xKeys = d => d.key
    const yValues = d => d.value
@@ -97,20 +98,34 @@ d3.csv("/src/dataset/Bref2020_stats.csv", d3.autoType).then(data => {
     //   row.year
     
     const playerObject = data[0]
-      const playerArray = []
+    console.log(playerObject)
+      const playerArrayPercentage = []
+      const playerArrayRanking = []
     //   console.log(playerArray)
-      const xKeys = ["Games", "Runs Scored", "Hits", "HR", "RBI", "BA", "OBP", "SLG", "OPS", "OPS+"]
+      const xKeysPercentage = ["Games", "Runs Scored", "Hits", "HR", "RBI", "BA", "OBP", "SLG", "OPS", "OPS+"]
+      const xKeysRanking = ["Games Ranking","Runs Ranking", "Hits Ranking","HR Ranking", "RBI Ranking", "BA Ranking", "OBP Ranking", "SLG Ranking", "OPS Ranking", "OPS+ Ranking"]
       for (const key in playerObject){
-          if (xKeys.includes(key)){
-          playerArray.push({
+          if (xKeysPercentage.includes(key)){
+          playerArrayPercentage.push({
               key:key,
               value: playerObject[key] * 100
           })
       }}
+      for (const key in playerObject){
+        if (xKeysRanking.includes(key)){
+        playerArrayRanking.push({
+            key:key,
+            value: playerObject[key] 
+        })
+    }}
    
+   console.log("playerArrayPercentage")
+   console.log(playerArrayPercentage)
+    console.log("playerArrayRanking")
+    console.log(playerArrayRanking)
     
+    update(playerArrayPercentage);
     
-    render(playerArray);
 })
 
 

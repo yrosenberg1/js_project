@@ -3,34 +3,62 @@ import * as d3 from 'd3';
 // let players = [];
 // //Event listener to register user input
 //Search function
-const searchBar = document.getElementById('searchBar');
+const searchBar = document.getElementById('search-bar');
+const searchBarResults = document.querySelector('.search-bar-results')
+console.log("searchBarResults")
+console.log(searchBarResults)
 let playerObjects = []
 const playerData = d3.csv("/src/dataset/Bref2020_stats.csv", d3.autoType).then(data => {
         
     return data
 }).then( players => {
-    const  playersNames = players.map(player => player.Name.toLowerCase())
+    const  playersNames = players.map(player => player.Name)
 console.log("playersNames:")
 console.log(playersNames)
-    searchBar.addEventListener('keyup', e => {
-      
-    const input = e.target.value.toLowerCase();
-    console.log(input)
-    const filteredPlayers = playersNames.filter(name => name.toLowerCase().includes(input) 
-    );
-        
-    if (filteredPlayers.length < 10){
-        filteredPlayers.forEach(playerName => {  
-          const findPlayer =  players.find(player => { return  player.Name.toLowerCase() === playerName})
-          console.log(findPlayer)
-          if (!playerObjects.includes(findPlayer)){
-              playerObjects.push(findPlayer)
-          }
-        } )
-        
+   
 
+searchBar.addEventListener('keyup', e => {
+    const input = e.target.value.toLowerCase();
+    let filteredPlayersArray = []
+      
+    if (input){
+        filteredPlayersArray = playersNames.filter(name => name.toLowerCase().startsWith(input.toLowerCase()) 
+    
+    );
+    filteredPlayersArray = filteredPlayersArray.map( name => {
+        console.log("name")
+        console.log(name)
+        return name = `<li> ${name} </li>`
+    })
+        console.log("filteredPlayersArray")
+        console.log(filteredPlayersArray)
+    } else {
+
+    }
+    playerList(filteredPlayersArray)
+})
+ 
+function playerList(players){
+let list;
+if (!players.length){
+
+} else {
+list = players.join('')
+console.log("list")
+console.log(list)
+}
+searchBarResults.innerHTML = list
+}    
+// const playerObject = players.find(player => player.Name === filteredPlayers[0])
+        // if (filteredPlayers.length < 10){
+        //     filteredPlayers.forEach(playerName => {  
+            //       const findPlayer =  players.find(player => { return  player.Name.toLowerCase() === playerName})
+            //       console.log(findPlayer)
+    //       if (!playerObjects.includes(findPlayer)){
+    //           playerObjects.push(findPlayer)
+    //       }
+    //     } )
         
-        // const playerObject = players.find(player => player.Name === filteredPlayers[0])
         // const playerList = d3.select("search-bar-results")
           
         // playerList.selectAll('li').data(playerObjects)
@@ -40,27 +68,21 @@ console.log(playersNames)
         //     // .text(d => d.Name );
         //     debugger
 
-        playerObjects.forEach( playerObject => { 
-             const playerList = document.getElementById("search-bar-results")
-            const playerli = document.createElement("li")
-            playerli.setAttribute("class", "search-list")
-            playerli.innerText = playerObject.Name
-            playerList.appendChild(playerli)
-            
-         })
+//         const playerList = d3.select('search-bar-container')
+//             playerList.selectAll('li').data()
 
        
-        // return playerObject
-    }
-    const random = Math.floor(Math.random() * playerObjects.length);
+//         // return playerObject
+    
+//     const random = Math.floor(Math.random() * playerObjects.length);
 
-   const playerObject = playerObjects[random]
-   console.log("playerObject")   
-   console.log(playerObject)   
-   return playerObject
-});
+//    const playerObject = playerObjects[random]
+//    console.log("playerObject")   
+//    console.log(playerObject)   
+//    return playerObject
+// });
 
-})
+// })
 //     console.log(input)
 //     const filtered = playersNames.filter(name => name.toLowerCase().includes(input))
 //     //     if (filtered.length === 1){
@@ -111,7 +133,7 @@ console.log(playersNames)
 //     return playerArray
 // })
 
-
+})
 
 
 

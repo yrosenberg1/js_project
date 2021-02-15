@@ -11,20 +11,21 @@
 </head>
 
 <body>
-    <div id='search-bar-container'>
-        
-        <input type='text'
+    <div class='search-bar-container'>
+        <div class='player-search-input'>
+            <input type='text'
                 name='searchBar'
-                id="searchBar"
-                placeholder="Enter a Player's Name"
+                id="search-bar"
+                placeholder="Player's Name"
                 value = ""
                 />
-       
+            <div class='search-bar-results'></div>
+               
+        </div>
     </div>
-    <ul id="search-bar-results"> </ul>
            <div class="Ranking-Percentile-button-container">
-            <button onclick="update('var1')" id="percentage-button">by Percentage</button>
-            <button onclick="update('var2')" id="ranking-button"> by Ranking</button>
+            <button onclick="update('playerArrayPercentage')" id="percentage-button">by Percentage</button>
+            <button onclick="update('playerArrayRanking')" id="ranking-button"> by Ranking</button>
 
            </div>
     <svg id='svg' width='1000' height='1000'> </svg>

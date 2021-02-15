@@ -1,5 +1,5 @@
 import * as d3 from 'd3';
-import { timeDay } from 'd3';
+
 
 const statsTable = d3.csv("/src/dataset/Bref2020_stats.csv", d3.autoType).then(data => {
     
@@ -47,5 +47,5 @@ tableBody.setAttribute("class", "table-body")
 table.append(tableBody)
 })
 // const table=createTable(statsTable) 
-debugger
+
 export default statsTable;
