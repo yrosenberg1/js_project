@@ -13,7 +13,9 @@ import statsTable from './scripts/statstable';
     
     // })
     
-const svg = select('svg')
+const svg = select('#svg')
+console.log("svg")
+console.log(svg)
 const width = +svg.attr('width');
 const height = +svg.attr('height');
 
@@ -64,7 +66,7 @@ const update = data => {
             .attr('width', xScale.bandwidth())
             // .attr('height', yScale(xKeys))
             .attr('height', d => chartHeight - yScale(yValues(d)))
-
+debugger
  }
 
 
@@ -98,6 +100,7 @@ const update = data => {
     //   row.year
   export const createChart = playerObject => {
     console.log(playerObject)
+    
       const playerArrayPercentage = []
       const playerArrayRanking = []
     //   console.log(playerArray)
@@ -123,8 +126,8 @@ const update = data => {
     console.log("playerArrayRanking")
     console.log(playerArrayRanking)
     
+    debugger
     update(playerArrayPercentage);
-    
 }
 
 

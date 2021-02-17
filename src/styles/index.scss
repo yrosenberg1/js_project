@@ -4,26 +4,32 @@ body{
 }
 .nav-bar-container{
     height: 70px;
-    width: 4000px;
+    width: auto;
     background-color: rgb(144, 146, 223);
     display: flex;
 flex-direction: row;
 }
-
+.left-navbar{
+    display: contents;
+}
 .mlb-icon{
     max-width: 70px;
     max-height: 70px;
     margin-left: 20px;
+    
 }
 .header-title{
-    font-size: 30px;
+    font-size: 40px;
+    display: flex;
+    align-items: center;
+    padding-left: 30px;
 }
 .mlb{
-    color: red;
+    color: #bf0d3e;
 }
 
 .stats{
-    color: rgb(17, 17, 98);
+    color: #041e42;
 }
 
 rect {

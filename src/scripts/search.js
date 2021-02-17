@@ -76,7 +76,7 @@ list = players.join('')
 searchBarResults.innerHTML = list
 }    
 
-$.ajax({})
+// $.ajax({})
 
 //  function selectPlayer(players){
 

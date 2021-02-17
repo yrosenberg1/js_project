@@ -1,12 +1,7 @@
 import * as d3 from 'd3';
-
-
-// const statsTable = d3.csv("/src/dataset/Bref2020_stats.csv", d3.autoType).then(data => {
-    
-//     return data[0]
-
-
-// }).then(
+const table = d3.select(".table")
+ 
+  
    const statsTable = (playerObject) => {
        
   let table = document.createElement("table")
