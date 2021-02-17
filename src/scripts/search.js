@@ -32,7 +32,7 @@ searchBar.addEventListener('keyup', e => {
            console.log("playerObject")
            console.log(playerObject)
         }
-        
+       
     
         filteredPlayersArray = playersNames.filter(name => name.toLowerCase().startsWith(input.toLowerCase()));
         filteredPlayersArray = filteredPlayersArray.map(name => { return name = `<li> ${name} </li>`})
@@ -61,7 +61,9 @@ function choosePlayer(el){
             statsTable(playerObject)
             createChart(playerObject)
             debugger
-        }
+        } 
+            
+      
     }
    
 }

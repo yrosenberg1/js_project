@@ -1,10 +1,40 @@
 import * as d3 from 'd3';
-const table = d3.select(".table")
+const tableContainer = d3.select(".table-container")
  
+// const statsTable = playerObject => {
+//     console.log(playerObject)
+//     const table = tableContainer.append('table')
+//     const tableHeader = Object.keys(playerObject)
+//     console.log("tableHeader")
+//     console.log(tableHeader)
+//     const header = table.append('thead').append('tr')
+
+//     header
+//         .selectAll('th')
+//         .data(tableHeader)
+//         .enter()
+//         .append('th')
+//         .attr("class", "headers")
+//         .text( d => d)
+//         console.log(header)
+
+//     table.selectAll('tr')
+//     .data(playerObject)
+//     .enter()
+//     .append("tr")
+//     .attr("class", "rows")
+    
+// }
+let table = document.createElement("table")
   
    const statsTable = (playerObject) => {
        
-  let table = document.createElement("table")
+       
+       if (table.rows.length === 2){
+           
+           table.deleteRow(0);
+           table.deleteRow(0);
+       }
     table.setAttribute("id", "stats-table");
     document.body.appendChild(table);
 
@@ -42,9 +72,13 @@ table.appendChild(tableHeaderRow)
 
 const tableBody = document.createElement('tbody')
 tableBody.setAttribute("class", "table-body")
+console.log("table")
+console.log(table)
 table.append(tableBody)
 debugger
-table = null
-}
+
+
+   }
+// }
 // const table=createTable(statsTable) 
 export default statsTable;
