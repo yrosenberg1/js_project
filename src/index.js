@@ -93,11 +93,10 @@ const update = data => {
 //     render(data);
 // })
 
-d3.csv("/src/dataset/Bref2020_stats.csv", d3.autoType).then(data => {
+// d3.csv("/src/dataset/Bref2020_stats.csv", d3.autoType).then(data => {
     // data.forEach(row => {
     //   row.year
-    
-    const playerObject = data[0]
+  export const createChart = playerObject => {
     console.log(playerObject)
       const playerArrayPercentage = []
       const playerArrayRanking = []
@@ -126,6 +125,6 @@ d3.csv("/src/dataset/Bref2020_stats.csv", d3.autoType).then(data => {
     
     update(playerArrayPercentage);
     
-})
+}
 
 

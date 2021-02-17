@@ -1,54 +1,86 @@
 import * as d3 from 'd3';
+import statsTable from "./statstable"
+import {createChart} from "../index"
 // const searchBar = document.querySelector("input");
 // let players = [];
 // //Event listener to register user input
 //Search function
 const searchBar = document.getElementById('search-bar');
 const searchBarResults = document.querySelector('.search-bar-results')
-console.log("searchBarResults")
-console.log(searchBarResults)
-let playerObjects = []
+
+let playerObject = {}
 const playerData = d3.csv("/src/dataset/Bref2020_stats.csv", d3.autoType).then(data => {
         
     return data
 }).then( players => {
-    const  playersNames = players.map(player => player.Name)
-console.log("playersNames:")
-console.log(playersNames)
-   
+    console.log("players")
+    console.log(players)
+    const  playersNames = players.map(player => player.Name)   
 
 searchBar.addEventListener('keyup', e => {
     const input = e.target.value.toLowerCase();
     let filteredPlayersArray = []
-      
+    if (e.keyCode === 13){
+        searchBar.click()
+    }
     if (input){
-        filteredPlayersArray = playersNames.filter(name => name.toLowerCase().startsWith(input.toLowerCase()) 
+        
+        searchBar.onclick = () => {
+            
+            let selectedName = input
+           let playerObject = players.find(player => player.Name === selectedName)
+           console.log("playerObject")
+           console.log(playerObject)
+        }
+        
     
-    );
-    filteredPlayersArray = filteredPlayersArray.map( name => {
-        console.log("name")
-        console.log(name)
-        return name = `<li> ${name} </li>`
-    })
-        console.log("filteredPlayersArray")
-        console.log(filteredPlayersArray)
+        filteredPlayersArray = playersNames.filter(name => name.toLowerCase().startsWith(input.toLowerCase()));
+        filteredPlayersArray = filteredPlayersArray.map(name => { return name = `<li> ${name} </li>`})
+       
     } else {
 
     }
+
     playerList(filteredPlayersArray)
+    let handleList = searchBarResults.querySelectorAll('li')
+   handleList.forEach(li => li.setAttribute("onclick", choosePlayer(li) ))
+    
 })
- 
+
+function choosePlayer(el){
+    let playerName = el.innerText
+
+    searchBar.value = playerName
+    
+    searchBar.onclick = () => {
+        let selectedName = searchBar.value
+        let playerObject = players.find(player => player.Name === selectedName)  
+        console.log(playerObject)
+        console.log("playerObject")
+        if (playerObject){
+            statsTable(playerObject)
+            createChart(playerObject)
+            debugger
+        }
+    }
+   
+}
 function playerList(players){
 let list;
 if (!players.length){
 
 } else {
 list = players.join('')
-console.log("list")
-console.log(list)
+
 }
 searchBarResults.innerHTML = list
 }    
+
+$.ajax({})
+
+//  function selectPlayer(players){
+
+// }
 // const playerObject = players.find(player => player.Name === filteredPlayers[0])
         // if (filteredPlayers.length < 10){
         //     filteredPlayers.forEach(playerName => {  
