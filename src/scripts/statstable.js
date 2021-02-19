@@ -75,7 +75,7 @@ tableBody.setAttribute("class", "table-body")
 console.log("table")
 console.log(table)
 table.append(tableBody)
-debugger
+
 
 
    }

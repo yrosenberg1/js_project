@@ -1,6 +1,6 @@
 import * as d3 from 'd3';
 import statsTable from "./statstable"
-import {createChart} from "../index"
+import {createPlayerArrays, createPlayerArraysRanking, createPlayerArrayPercentage } from "../index"
 // const searchBar = document.querySelector("input");
 // let players = [];
 // //Event listener to register user input
@@ -8,7 +8,7 @@ import {createChart} from "../index"
 const searchBar = document.getElementById('search-bar');
 const searchBarResults = document.querySelector('.search-bar-results')
 
-let playerObject = {}
+
 const playerData = d3.csv("/src/dataset/Bref2020_stats.csv", d3.autoType).then(data => {
         
     return data
@@ -59,8 +59,16 @@ function choosePlayer(el){
         console.log("playerObject")
         if (playerObject){
             statsTable(playerObject)
-            createChart(playerObject)
-            debugger
+            createPlayerArrays(playerObject)
+    //   let rankingButton = d3.select("#ranking-button")
+    //         rankingButton
+    //          .on('click', createPlayerArraysRanking(playerObject))
+      
+    //     let percentageButton = d3.select("#percentage-button")
+    //     console.log(percentageButton)
+    //         percentageButton
+    //          .on('click', createPlayerArrayPercentage(playerObject))
+    //         debugger
         } 
             
       
