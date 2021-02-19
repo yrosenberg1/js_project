@@ -7,7 +7,7 @@ import {createPlayerArrays, createPlayerArraysRanking, createPlayerArrayPercenta
 //Search function
 const searchBar = document.getElementById('search-bar');
 const searchBarResults = document.querySelector('.search-bar-results')
-
+const playerSearchInput = document.querySelector('.player-search-input')
 
 const playerData = d3.csv("/src/dataset/Bref2020_stats.csv", d3.autoType).then(data => {
         
@@ -26,7 +26,11 @@ searchBar.addEventListener('keyup', e => {
     if (input){
         
         searchBar.onclick = () => {
-            
+            if (!playerObject){
+                searchBar.value = "No Matching Player found"
+                playerSearchInput.classList.remove('active')
+               
+            }
             let selectedName = input
            let playerObject = players.find(player => player.Name === selectedName)
            console.log("playerObject")
@@ -36,10 +40,8 @@ searchBar.addEventListener('keyup', e => {
     
         filteredPlayersArray = playersNames.filter(name => name.toLowerCase().startsWith(input.toLowerCase()));
         filteredPlayersArray = filteredPlayersArray.map(name => { return name = `<li class="search-bar-li"> ${name} </li>`})
-       
-    } else {
-
-    }
+        playerSearchInput.classList.add('active')
+    
 
     playerList(filteredPlayersArray)
     let handleList = searchBarResults.querySelectorAll('li')
@@ -51,6 +53,10 @@ searchBar.addEventListener('keyup', e => {
       });
        
     }
+} else {
+    debugger
+    playerSearchInput.classList.remove('active')
+}
 //    handleList.forEach(li =>  li.addEventListener("click", choosePlayer(li)))
 // let handleList = d3.selectorAll(".search-bar-li")
 //    handleList.on('click', `${choosePlayer(`li`)}`)
@@ -65,35 +71,30 @@ function choosePlayer(el){
     let playerName = el.innerText
     console.log(playerName)
     searchBar.value = playerName
-    debugger
+    
     searchBar.onclick = () => {
-        debugger
+        
         let selectedName = searchBar.value
         let playerObject = players.find(player => player.Name === selectedName)  
-        console.log(playerObject)
-        console.log("playerObject")
+     
         if (playerObject){
+            setTimeout(clearSearchBar, 2000)
             statsTable(playerObject)
             createPlayerArrays(playerObject)
-    //   let rankingButton = d3.select("#ranking-button")
-    //         rankingButton
-    //          .on('click', createPlayerArraysRanking(playerObject))
-      
-    //     let percentageButton = d3.select("#percentage-button")
-    //     console.log(percentageButton)
-    //         percentageButton
-    //          .on('click', createPlayerArrayPercentage(playerObject))
-    //         debugger
+           
         } 
             
-      
+        playerSearchInput.classList.remove('active')
     }
    
+    function clearSearchBar() {
+        searchBar.value = ""
+    }
 }
 function playerList(players){
 let list;
 if (!players.length){
-
+    playerSearchInput.classList.remove('active')
 } else {
   `<ul>${players}</ul>`
  list = players.join('')
@@ -102,7 +103,7 @@ if (!players.length){
 }
 
 searchBarResults.innerHTML = list;
-debugger
+
 }    
 
 // $.ajax({})
@@ -127,7 +128,7 @@ debugger
         //     .enter().append('li')
             
         //     // .text(d => d.Name );
-        //     debugger
+        //     
 
 //         const playerList = d3.select('search-bar-container')
 //             playerList.selectAll('li').data()
@@ -153,7 +154,7 @@ debugger
 //  if (filtered.length < 10){
 //      const list = 
 //  }
-// debugger
+// 
 // })
 // console.log("searchResult:")
 // console.log(searchResult)
