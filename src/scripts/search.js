@@ -8,13 +8,14 @@ import {createPlayerArrays, createPlayerArraysRanking, createPlayerArrayPercenta
 const searchBar = document.getElementById('search-bar');
 const searchBarResults = document.querySelector('.search-bar-results')
 const playerSearchInput = document.querySelector('.player-search-input')
-
+const randomizerDiv = document.querySelector('.randomizer-container')
 const playerData = d3.csv("/src/dataset/Bref2020_stats.csv", d3.autoType).then(data => {
         
     return data
 }).then( players => {
     console.log("players")
     console.log(players)
+    randomizer(players)
     const  playersNames = players.map(player => player.Name)   
 
 searchBar.addEventListener('keyup', e => {
@@ -65,6 +66,19 @@ searchBar.addEventListener('keyup', e => {
      
  }
 )
+    function randomizer(players){
+        debugger
+        let randomizeButton = document.createElement('button')
+            randomizeButton.setAttribute('class', 'random-button')
+            randomizeButton.textContent = 'Select a Random Player'
+        randomizerDiv.appendChild(randomizeButton)
+        randomizeButton.onclick = () => {
+            const randomNumber = Math.floor(Math.random() * (players.length - 1))
+            console.log((players[randomNumber]))
+            createPlayerArrays(players[randomNumber])
+        //     
+        }
+}
 
 function choosePlayer(el){
     
