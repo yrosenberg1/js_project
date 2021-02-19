@@ -1,14 +1,17 @@
 import * as d3 from 'd3';
 import statsTable from "./statstable"
-import {createPlayerArrays, createPlayerArraysRanking, createPlayerArrayPercentage } from "../index"
-// const searchBar = document.querySelector("input");
-// let players = [];
-// //Event listener to register user input
-//Search function
+import {createPlayerArrays } from "../index"
+import {randomizer} from "./randomizer"
+
+
+
+let playerParagraph = document.querySelector('.player-name')
+
+let teamParagraph = document.querySelector('.team-name')
 const searchBar = document.getElementById('search-bar');
 const searchBarResults = document.querySelector('.search-bar-results')
 const playerSearchInput = document.querySelector('.player-search-input')
-const randomizerDiv = document.querySelector('.randomizer-container')
+// const randomizerDiv = document.querySelector('.randomizer-container')
 const playerData = d3.csv("/src/dataset/Bref2020_stats.csv", d3.autoType).then(data => {
         
     return data
@@ -55,7 +58,7 @@ searchBar.addEventListener('keyup', e => {
        
     }
 } else {
-    debugger
+    
     playerSearchInput.classList.remove('active')
 }
 //    handleList.forEach(li =>  li.addEventListener("click", choosePlayer(li)))
@@ -66,19 +69,7 @@ searchBar.addEventListener('keyup', e => {
      
  }
 )
-    function randomizer(players){
-        debugger
-        let randomizeButton = document.createElement('button')
-            randomizeButton.setAttribute('class', 'random-button')
-            randomizeButton.textContent = 'Select a Random Player'
-        randomizerDiv.appendChild(randomizeButton)
-        randomizeButton.onclick = () => {
-            const randomNumber = Math.floor(Math.random() * (players.length - 1))
-            console.log((players[randomNumber]))
-            createPlayerArrays(players[randomNumber])
-        //     
-        }
-}
+   
 
 function choosePlayer(el){
     
@@ -95,7 +86,8 @@ function choosePlayer(el){
             setTimeout(clearSearchBar, 2000)
             statsTable(playerObject)
             createPlayerArrays(playerObject)
-           
+            playerParagraph.textContent = playerObject.Name
+            teamParagraph.textContent = playerObject.Team
         } 
             
         playerSearchInput.classList.remove('active')
@@ -120,94 +112,6 @@ searchBarResults.innerHTML = list;
 
 }    
 
-// $.ajax({})
-
-//  function selectPlayer(players){
-
-// }
-// const playerObject = players.find(player => player.Name === filteredPlayers[0])
-        // if (filteredPlayers.length < 10){
-        //     filteredPlayers.forEach(playerName => {  
-            //       const findPlayer =  players.find(player => { return  player.Name.toLowerCase() === playerName})
-            //       console.log(findPlayer)
-    //       if (!playerObjects.includes(findPlayer)){
-    //           playerObjects.push(findPlayer)
-    //       }
-    //     } )
-        
-        // const playerList = d3.select("search-bar-results")
-          
-        // playerList.selectAll('li').data(playerObjects)
-        
-        //     .enter().append('li')
-            
-        //     // .text(d => d.Name );
-        //     
-
-//         const playerList = d3.select('search-bar-container')
-//             playerList.selectAll('li').data()
-
-       
-//         // return playerObject
-    
-//     const random = Math.floor(Math.random() * playerObjects.length);
-
-//    const playerObject = playerObjects[random]
-//    console.log("playerObject")   
-//    console.log(playerObject)   
-//    return playerObject
-// });
-
-// })
-//     console.log(input)
-//     const filtered = playersNames.filter(name => name.toLowerCase().includes(input))
-//     //     if (filtered.length === 1){
-//     //   const  selectedName = filtered[0]
-//     // }
-// // console.log(filtered)
-//  if (filtered.length < 10){
-//      const list = 
-//  }
-// 
-// })
-// console.log("searchResult:")
-// console.log(searchResult)
- 
-//     const playersNames = data.map(players => players.Name)
-//     console.log(playersNames)
-//     // let selectedName = "";
-
-//     // if (filtered.length === 1){
-//     //     selectedName = filtered[0]
-//     // }
-//      const selectedName = "José Abreu"
-//   const playerObject = selectedName ? data.find(player => player.Name === selectedName ) : ""
-// //   const playerArray = []
-// //   console.log(playerArray)
-// //   const xKeys = ["Games", "Runs Scored", "Hits", "HR", "RBI", "BA", "OBP", "SLG", "OPS", "OPS+"]
-// //   for (const key in playerObject){
-// //       if (xKeys.includes(key)){
-// //       playerArray.push({
-// //           key:key,
-// //           value: playerObject[key] * 100
-// //       })
-// //   }}
-//     //     if (playerNames.includes(input)){
-//     //        playerName = input
-//     //    }
-    
-    
-//         // console.log(playerObject)
-//         //    console.log(playerArray) 
-       
-       
-        
-    
-    
-    
-//     // render(playerArray);
-//     return playerArray
-// })
 
 })
 
