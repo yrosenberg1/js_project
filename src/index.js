@@ -8,18 +8,18 @@ import playerData from "./scripts/search";
 
 import statsTable from './scripts/statstable';
 let selecter = 1
-let player = {};
+let player;
 const button = select('#percentage-ranking-button')
 
 const updateSelecter = () => {
         
     if (selecter === 0){
         selecter = 1
-        button.text("By Ranking")
+        
         
     } else {
         selecter = 0
-        button.text("By Percentage")
+       
     }
     createPlayerArrays(player)
 }  
@@ -28,15 +28,19 @@ const updateSelecter = () => {
     export const createPlayerArrays = (playerObject) => {
       
         if (selecter === 1){
-            
+            button
+            .text('by Ranking')
+            .style('opacity', 1)
         createPlayerArrayPercentage(playerObject);
         } else {
-            debugger
+            button
+            .text('by Percentage')
+            .style('opacity', 1)
         createPlayerArraysRanking(playerObject)
         }
         player = playerObject
-        button.text('by Ranking')
-        debugger
+       
+        
     }
     
   
@@ -47,7 +51,7 @@ const updateSelecter = () => {
 
 
     const width = 1000
-    const height = 1000
+    const height = 500
     const margin = {left: 100, top: 30, right: 100, bottom: 50}
     const chartWidth = width - margin.left - margin.right;
     const chartHeight = height - margin.top - margin.bottom;
@@ -203,7 +207,7 @@ const update = data => {
    
 
  export const createPlayerArrayPercentage = playerObject => {
-     debugger
+     
     const xKeysPercentage = ["Games", "Runs Scored", "Hits", "HR", "RBI", "BA", "OBP", "SLG", "OPS", "OPS+"]
     const playerArrayPercentage = []
     for (const key in playerObject){
@@ -219,7 +223,7 @@ const update = data => {
  }
  
  export const createPlayerArraysRanking = (playerObject) => {
-     debugger
+     
     const xKeysRanking = ["Games Ranking","Runs Ranking", "Hits Ranking","HR Ranking", "RBI Ranking", "BA Ranking", "OBP Ranking", "SLG Ranking", "OPS Ranking", "OPS+ Ranking"]
     const playerArrayRanking = []
 

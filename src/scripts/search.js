@@ -35,7 +35,7 @@ searchBar.addEventListener('keyup', e => {
        
     
         filteredPlayersArray = playersNames.filter(name => name.toLowerCase().startsWith(input.toLowerCase()));
-        filteredPlayersArray = filteredPlayersArray.map(name => { return name = `<li> ${name} </li>`})
+        filteredPlayersArray = filteredPlayersArray.map(name => { return name = `<li class="search-bar-li"> ${name} </li>`})
        
     } else {
 
@@ -43,16 +43,31 @@ searchBar.addEventListener('keyup', e => {
 
     playerList(filteredPlayersArray)
     let handleList = searchBarResults.querySelectorAll('li')
-   handleList.forEach(li => li.setAttribute("onclick", choosePlayer(li) ))
-    
-})
+    for (let i = 0; i< handleList.length; i++) {
+      handleList[i].addEventListener('click', function(){
+         
+         choosePlayer(this)
+         searchBar.click()
+      });
+       
+    }
+//    handleList.forEach(li =>  li.addEventListener("click", choosePlayer(li)))
+// let handleList = d3.selectorAll(".search-bar-li")
+//    handleList.on('click', `${choosePlayer(`li`)}`)
+//  for (let index = 0; index < handleList.length; index++) {
+//      handleList[index].onclick=`${choosePlayer(`handleList[index]`)}`
+     
+ }
+)
 
 function choosePlayer(el){
-    let playerName = el.innerText
-
-    searchBar.value = playerName
     
+    let playerName = el.innerText
+    console.log(playerName)
+    searchBar.value = playerName
+    debugger
     searchBar.onclick = () => {
+        debugger
         let selectedName = searchBar.value
         let playerObject = players.find(player => player.Name === selectedName)  
         console.log(playerObject)
@@ -80,10 +95,14 @@ let list;
 if (!players.length){
 
 } else {
-list = players.join('')
-
+  `<ul>${players}</ul>`
+ list = players.join('')
+ 
+ 
 }
-searchBarResults.innerHTML = list
+
+searchBarResults.innerHTML = list;
+debugger
 }    
 
 // $.ajax({})
