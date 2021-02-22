@@ -26,15 +26,17 @@ const tableContainer = d3.select(".table-container")
     
 // }
 let table = document.createElement("table")
-  
-   const statsTable = (playerObject) => {
-       
-       
-       if (table.rows.length === 2){
-           
-           table.deleteRow(0);
-           table.deleteRow(0);
-       }
+
+const statsTable = (playerObject) => {
+    
+    
+    if (table.rows.length){
+        
+        const rows = table.rows.length - 1
+        for (let i = rows; i >= 0; i--) {
+            table.deleteRow(i)
+         }  
+    }
     table.setAttribute("id", "stats-table");
     document.body.appendChild(table);
 
