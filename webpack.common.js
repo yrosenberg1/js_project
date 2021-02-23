@@ -73,8 +73,19 @@ module: {
         "postcss-loader",
         ],
     },
+    {
+        test: /\.csv$/,
+        loader: 'csv-loader',
+        options: {
+          dynamicTyping: true,
+          header: true,
+          skipEmptyLines: true
+        }
+      },
     ],
 },
+
+
 plugins: [
     new MiniCssExtractPlugin({
     // Options similar to the same options in webpackOptions.output

@@ -19,7 +19,7 @@ var twoSum = function(nums, target) {
       return solutionArray
   };
       
-      TeamNamesArray = 
+      teamNamesArray = 
     [
       "Arizona Diamondbacks",
       "Atlanta Braves",
@@ -52,7 +52,7 @@ var twoSum = function(nums, target) {
       "Toronto Blue Jays",
       "Washington Nationals",
       
-]      
+];      
           
       
   

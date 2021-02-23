@@ -2,32 +2,35 @@ import * as d3 from 'd3';
 import statsTable from "./statstable"
 import {createPlayerArrays } from "../index"
 import {randomizer} from "./randomizer"
+import Bref2020 from "../dataset/Bref2020_stats.csv"
 
 
 
-let playerParagraph = document.querySelector('.player-name')
+    let playerParagraph = document.querySelector('.player-name')
+    let teamParagraph = document.querySelector('.team-name')
 
-let teamParagraph = document.querySelector('.team-name')
-const searchBar = document.getElementById('search-bar');
-const searchBarResults = document.querySelector('.search-bar-results')
-const playerSearchInput = document.querySelector('.player-search-input')
-// const randomizerDiv = document.querySelector('.randomizer-container')
-const playerData = d3.csv("/src/dataset/Bref2020_stats.csv", d3.autoType).then(data => {
+    const searchBar = document.getElementById('search-bar');
+    const searchBarResults = document.querySelector('.search-bar-results')
+    const playerSearchInput = document.querySelector('.player-search-input')
+    // const randomizerDiv = document.querySelector('.randomizer-container')
+    // const playerData = d3.csv("/src/dataset/Bref2020_stats.csv", d3.autoType).then(data => {
         
-    return data
-}).then( players => {
-    console.log("players")
-    console.log(players)
-    randomizer(players)
+    function playerData(){
+            const players = Bref2020
+            console.log("players")
+            console.log(players)
+            randomizer(Bref2020)
+       
     const  playersNames = players.map(player => player.Name)   
 
-searchBar.addEventListener('keyup', e => {
-    const input = e.target.value.toLowerCase();
-    let filteredPlayersArray = []
-    if (e.keyCode === 13){
-        searchBar.click()
-    }
-    if (input){
+        searchBar.addEventListener('keyup', e => {
+        const input = e.target.value.toLowerCase();
+        let filteredPlayersArray = []
+        if (e.keyCode === 13){
+            searchBar.click()
+         }
+
+        if (input){
         
         searchBar.onclick = () => {
             if (!playerObject){
@@ -97,6 +100,7 @@ function choosePlayer(el){
         searchBar.value = ""
     }
 }
+
 function playerList(players){
 let list;
 if (!players.length){
@@ -113,8 +117,8 @@ searchBarResults.innerHTML = list;
 }    
 
 
-})
+}
 
+    
 
-
-export default playerData; 
+export default playerData(); 
