@@ -1,13 +1,15 @@
-import { csv, select, scaleLinear, max, scaleBand, axisLeft, axisBottom, schemeGnBu  } from "d3";
+import { select, scaleLinear, max, scaleBand, axisLeft, axisBottom  } from "d3";
  import "./styles/reset.scss";
 import "./styles/index.scss";
 import "./styles/navbar.scss";
 import "./styles/search.scss";
 import "./styles/chart.scss";
+import "./styles/year_selecter.scss";
 import * as d3 from 'd3';
 import playerData from "./scripts/search";
 import statsTable from './scripts/statstable';
-import {lineChart} from "./scripts/lollipopchart"
+// import {lineChart} from "./scripts/lollipopchart"
+import yearSelecter from './scripts/year_selector'
 let selecter = 1
 let player;
 const toggleButton = select('#percentage-ranking-toggle-button')

@@ -1,5 +1,6 @@
 import {createPlayerArrays } from "../index"
 import statsTable from "./statstable"
+import { inputName } from "./year_selector"
 const randomizerDiv = document.querySelector('.randomizer-container')
 let randomizeButton = document.createElement('button')
         randomizeButton.setAttribute('class', 'random-button')
@@ -20,6 +21,7 @@ let teamParagraph = document.createElement('li')
         debugger
         createPlayerArrays(randomPlayer)
         statsTable(randomPlayer)
+        inputName(randomPlayer.Name)
         playerParagraph.textContent = randomPlayer.Name
         teamParagraph.textContent = randomPlayer.Team
         }

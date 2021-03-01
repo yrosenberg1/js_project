@@ -2,7 +2,9 @@ import * as d3 from 'd3';
 import statsTable from "./statstable"
 import {createPlayerArrays } from "../index"
 import {randomizer} from "./randomizer"
-import Bref2020 from "../dataset/Bref2020_stats.csv"
+import Bref2020 from "../dataset/Bref2020.csv"
+import Bref2019 from "../dataset/Bref2019.csv"
+import {inputName, season, importPlayers} from "./year_selector";
 
 
 
@@ -14,15 +16,38 @@ import Bref2020 from "../dataset/Bref2020_stats.csv"
     const playerSearchInput = document.querySelector('.player-search-input')
     // const randomizerDiv = document.querySelector('.randomizer-container')
     // const playerData = d3.csv("/src/dataset/Bref2020_stats.csv", d3.autoType).then(data => {
-        
-    function playerData(){
-            const players = Bref2020
+         season
+   export function playerData(season){
+     if (!season){
+         debugger
+          season = 2020
+     } 
+       
+       
+     
+     // const players = Bref2020
+     const data = season
+     
+            let players; 
+            switch (data) {
+                case 2019:
+                    debugger
+                    players = Bref2019
+                    break;
+            
+                case 2020:
+                    debugger
+                    players = Bref2020
+                    break;
+            }
             console.log("players")
             console.log(players)
-            randomizer(Bref2020)
+            debugger
+            randomizer(players)
+            importPlayers(players)
        
     const  playersNames = players.map(player => player.Name)   
-
+            debugger
         searchBar.addEventListener('keyup', e => {
         const input = e.target.value.toLowerCase();
         let filteredPlayersArray = []
@@ -39,9 +64,10 @@ import Bref2020 from "../dataset/Bref2020_stats.csv"
                
             }
             let selectedName = input
-           let playerObject = players.find(player => player.Name === selectedName)
+            let playerObject = players.find(player => player.Name === selectedName)
            console.log("playerObject")
            console.log(playerObject)
+           debugger
         }
        
     
@@ -84,11 +110,12 @@ function choosePlayer(el){
         
         let selectedName = searchBar.value
         let playerObject = players.find(player => player.Name === selectedName)  
-     
         if (playerObject){
+            debugger
             setTimeout(clearSearchBar, 2000)
             statsTable(playerObject)
             createPlayerArrays(playerObject)
+            inputName(selectedName)
             playerParagraph.textContent = playerObject.Name
             teamParagraph.textContent = playerObject.Team
         } 
@@ -116,7 +143,7 @@ searchBarResults.innerHTML = list;
 
 }    
 
-
+debugger
 }
 
     

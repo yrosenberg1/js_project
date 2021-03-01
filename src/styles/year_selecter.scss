@@ -1,0 +1,45 @@
+.Year-selector-btn-container{
+position: relative;
+display: block;
+}
+
+.year-selecter-btn{
+    background-color: #9092df;
+    color:#bb0d3e;
+    padding: 12px;
+    font-size: 14px;
+    border: none;
+
+}
+
+.season-dropdown-content{
+    display: none;
+    position: absolute;
+    background-color: #9092df;
+    min-width: 118.16px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+
+.Year-selector-btn-container:hover .season-dropdown-content{
+    display: block;
+}
+
+.season-dropdown-content button{
+    color:#bb0d3e;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    width: -webkit-fill-available;
+    background-color:  #9092df;
+
+}
+
+.season-dropdown-content button:hover{
+    background-color:#787ceb;
+}
+
+.Year-selector-btn-container .season-dropdown-content button{
+   
+} 
