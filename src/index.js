@@ -228,6 +228,6 @@ const removeTable = () => {
         removeTable()
         console.log(player)
         lineChart(player)
-        debugger
+        
     })
 

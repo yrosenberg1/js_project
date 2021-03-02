@@ -2,22 +2,23 @@ import * as d3 from 'd3';
 import statsTable from "./statstable"
 import {createPlayerArrays } from "../index"
 import {randomizer} from "./randomizer"
-import Bref2020 from "../dataset/Bref2020.csv"
-import Bref2019 from "../dataset/Bref2019.csv"
-import Bref2018 from "../dataset/Bref2018.csv"
+import Bref2020 from "../dataset/Bref2020.csv";
+import Bref2019 from "../dataset/Bref2019.csv";
+import Bref2018 from "../dataset/Bref2018.csv";
+import Bref2017 from "../dataset/Bref2017.csv";
+import Bref2016 from "../dataset/Bref2016.csv";
 import {inputName, season, importPlayers} from "./year_selector";
 
 
 
     let playerParagraph = document.querySelector('.player-name')
     let teamParagraph = document.querySelector('.team-name')
-
     const searchBar = document.getElementById('search-bar');
     const searchBarResults = document.querySelector('.search-bar-results')
     const playerSearchInput = document.querySelector('.player-search-input')
-    // const randomizerDiv = document.querySelector('.randomizer-container')
-    // const playerData = d3.csv("/src/dataset/Bref2020_stats.csv", d3.autoType).then(data => {
-         season
+    season
+
+   
    export function playerData(season){
      if (!season){
          debugger
@@ -43,20 +44,21 @@ import {inputName, season, importPlayers} from "./year_selector";
                case 2018:
                     players = Bref2018
                     break;
-                        
-                    
+               
+               case 2017:
+                    players = Bref2017
+                    break;
                 
-                 
-                        
+                case 2016:
+                    players = Bref2016
+                    break;
             }
-            console.log("players")
-            console.log(players)
-            debugger
+            
             randomizer(players)
             importPlayers(players)
        
     const  playersNames = players.map(player => player.Name)   
-            debugger
+            
         searchBar.addEventListener('keyup', e => {
         const input = e.target.value.toLowerCase();
         let filteredPlayersArray = []
@@ -76,7 +78,7 @@ import {inputName, season, importPlayers} from "./year_selector";
             let playerObject = players.find(player => player.Name === selectedName)
            console.log("playerObject")
            console.log(playerObject)
-           debugger
+           
         }
        
     
@@ -99,14 +101,8 @@ import {inputName, season, importPlayers} from "./year_selector";
     
     playerSearchInput.classList.remove('active')
 }
-//    handleList.forEach(li =>  li.addEventListener("click", choosePlayer(li)))
-// let handleList = d3.selectorAll(".search-bar-li")
-//    handleList.on('click', `${choosePlayer(`li`)}`)
-//  for (let index = 0; index < handleList.length; index++) {
-//      handleList[index].onclick=`${choosePlayer(`handleList[index]`)}`
-     
- }
-)
+
+})
    
 
 function choosePlayer(el){
@@ -120,7 +116,7 @@ function choosePlayer(el){
         let selectedName = searchBar.value
         let playerObject = players.find(player => player.Name === selectedName)  
         if (playerObject){
-            debugger
+            
             setTimeout(clearSearchBar, 2000)
             statsTable(playerObject)
             createPlayerArrays(playerObject)
@@ -152,7 +148,7 @@ searchBarResults.innerHTML = list;
 
 }    
 
-debugger
+
 }
 
     

@@ -72,7 +72,7 @@ export const lineChart = (array) => {
         //  const vertical = svg.append('g')
         // .attr("class", "yAxis")
 
-  debugger
+  
    
     // yScale.domain([700, 0])
 
@@ -97,7 +97,7 @@ const v = svg.selectAll('.myline').data(array)
  
 
 v.exit().remove()
-debugger
+
 }
 
 lineChart(array)

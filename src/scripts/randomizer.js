@@ -18,7 +18,7 @@ let teamParagraph = document.createElement('li')
       randomizeButton.onclick = () => {
         const randomNumber = Math.floor(Math.random() * (players.length - 1))
         const randomPlayer = players[randomNumber]
-        debugger
+        
         createPlayerArrays(randomPlayer)
         statsTable(randomPlayer)
         inputName(randomPlayer.Name)
