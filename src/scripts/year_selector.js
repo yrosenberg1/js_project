@@ -6,7 +6,7 @@ import {createPlayerArrays } from "../index"
 
 const yearSelecterButton = d3.select('.year-selecter-btn')
 const yearSelecterBtnContainer = d3.select('.Year-selector-btn-container')
-const yearArray = [2020, 2019]
+const yearArray = [2020, 2019, 2018]
 export let season = 2020;
 let player;
 let playerName;

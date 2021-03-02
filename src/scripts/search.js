@@ -4,6 +4,7 @@ import {createPlayerArrays } from "../index"
 import {randomizer} from "./randomizer"
 import Bref2020 from "../dataset/Bref2020.csv"
 import Bref2019 from "../dataset/Bref2019.csv"
+import Bref2018 from "../dataset/Bref2018.csv"
 import {inputName, season, importPlayers} from "./year_selector";
 
 
@@ -30,15 +31,23 @@ import {inputName, season, importPlayers} from "./year_selector";
      
             let players; 
             switch (data) {
-                case 2019:
-                    debugger
-                    players = Bref2019
-                    break;
-            
-                case 2020:
-                    debugger
+               
+               case 2020:
                     players = Bref2020
                     break;
+
+               case 2019:
+                    players = Bref2019
+                    break;
+                    
+               case 2018:
+                    players = Bref2018
+                    break;
+                        
+                    
+                
+                 
+                        
             }
             console.log("players")
             console.log(players)

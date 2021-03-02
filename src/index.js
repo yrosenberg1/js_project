@@ -8,8 +8,9 @@ import "./styles/year_selecter.scss";
 import * as d3 from 'd3';
 import playerData from "./scripts/search";
 import statsTable from './scripts/statstable';
+import Teams from './scripts/teams';
 // import {lineChart} from "./scripts/lollipopchart"
-import yearSelecter from './scripts/year_selector'
+import yearSelecter, { importPlayers } from './scripts/year_selector'
 let selecter = 1
 let player;
 const toggleButton = select('#percentage-ranking-toggle-button')
