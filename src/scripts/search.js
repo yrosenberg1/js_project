@@ -8,26 +8,26 @@ import Bref2018 from "../dataset/Bref2018.csv";
 import Bref2017 from "../dataset/Bref2017.csv";
 import Bref2016 from "../dataset/Bref2016.csv";
 import {inputName, season, importPlayers} from "./year_selector";
-
+import {teamPlayers} from "./teams"
 
 
     let playerParagraph = document.querySelector('.player-name')
     let teamParagraph = document.querySelector('.team-name')
+    let seasonParagraph = document.querySelector('.season-name')
     const searchBar = document.getElementById('search-bar');
     const searchBarResults = document.querySelector('.search-bar-results')
     const playerSearchInput = document.querySelector('.player-search-input')
+    const NoSeason = d3.select('.No-season-results-div')
+    const infoContainer = d3.select('.player-info-container')
+
     season
 
    
    export function playerData(season){
      if (!season){
-         debugger
-          season = 2020
+        season = 2020
      } 
        
-       
-     
-     // const players = Bref2020
      const data = season
      
             let players; 
@@ -53,10 +53,10 @@ import {inputName, season, importPlayers} from "./year_selector";
                     players = Bref2016
                     break;
             }
-            
-            randomizer(players)
+            console.log(players)
+            randomizer(players, season)
             importPlayers(players)
-       
+            teamPlayers(players, season)
     const  playersNames = players.map(player => player.Name)   
             
         searchBar.addEventListener('keyup', e => {
@@ -123,6 +123,12 @@ function choosePlayer(el){
             inputName(selectedName)
             playerParagraph.textContent = playerObject.Name
             teamParagraph.textContent = playerObject.Team
+            seasonParagraph.textContent = season
+            NoSeason
+             .style('display', 'none')
+            infoContainer
+             .style('display', 'block')
+            
         } 
             
         playerSearchInput.classList.remove('active')

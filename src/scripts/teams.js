@@ -1,8 +1,25 @@
 import * as d3 from "d3";
 import { selectAll } from "d3";
+import {yearSelecterFn, importPlayers, inputName} from "./year_selector";
+
+import {createPlayerArrays, removeChartFn, removeTable } from "../index"
 import '../styles/teams.scss';
 
 const TeamsDropdown = d3.select('.teams')
+const mainContainer = d3.select('.main-content-container')
+const playerDiv =  mainContainer.append('div').attr('class', 'team-players-div')
+
+let teamSelected;
+let playersArray;
+let year
+let playerParagraph = document.querySelector('.player-name')
+let teamParagraph = document.querySelector('.team-name')
+let seasonParagraph = document.querySelector('.season-name')
+const infoContainer = d3.select('.player-info-container')
+export const teamPlayers = (players, season) =>{
+playersArray = players
+year = season
+}
 
 const teamNamesArray = 
 [
@@ -38,7 +55,7 @@ const teamNamesArray =
   "Washington Nationals",
   
 ];     
-
+playerDiv.selectAll('ul').data(teamNamesArray).enter().append('ul').style('display', 'none')
 // TeamsDropdown
 //     .append('div')
 //         .attr('class', 'dropdown-content-container')
@@ -115,7 +132,7 @@ const NlWestArray =
 
 
   
-const divisionArray = ["AL East Division", "AL Central Division", "AL West Division", "NL East Division", "NL Central Division", "NL West Division"]
+const divisionArray = ["AL East", "AL Central", "AL West", "NL East", "NL Central", "NL West"]
 const nlArray = [ "NL East Division", "NL Central Division", "NL West"]
 const alArray = ["AL East Division", "AL Central Division", "AL West Division"]
 
@@ -155,12 +172,12 @@ divisionDivs.forEach(div => {
 
     
 ;
-const alEast =d3.select('.AL.East.Division-container')
-const alCentral =d3.select('.AL.Central.Division-container')
-const alWest =d3.select('.AL.West.Division-container')
-const NlEast =d3.select('.NL.East.Division-container')
-const NlCentral =d3.select('.NL.Central.Division-container')
-const NlWest =d3.select('.NL.West.Division-container')
+const alEast =d3.select('.AL.East-container')
+const alCentral =d3.select('.AL.Central-container')
+const alWest =d3.select('.AL.West-container')
+const NlEast =d3.select('.NL.East-container')
+const NlCentral =d3.select('.NL.Central-container')
+const NlWest =d3.select('.NL.West-container')
 
 NlWest
 .append('ul')
@@ -172,6 +189,8 @@ NlWest
     .on('click', function(d){
     
     console.log(d.currentTarget.__data__)
+    teamSelected = d.currentTarget.__data__
+    teamPage(teamSelected)
 })
 
 
@@ -184,7 +203,9 @@ NlCentral
     .attr('value', d => d)
     .on('click', function(d){
     
-    console.log(d.currentTarget.__data__)
+    // console.log(d.currentTarget.__data__)
+    teamSelected = d.currentTarget.__data__
+    teamPage(teamSelected)
 })
 
 NlEast
@@ -196,7 +217,8 @@ NlEast
     .attr('value', d => d)
     .on('click', function(d){
     
-    console.log(d.currentTarget.__data__)
+     teamSelected = d.currentTarget.__data__
+    teamPage(teamSelected)
 })
 
 
@@ -211,6 +233,8 @@ alWest
     .on('click', function(d){
     
     console.log(d.currentTarget.__data__)
+    teamSelected = d.currentTarget.__data__
+    teamPage(teamSelected)
 })
 
 alCentral
@@ -223,6 +247,8 @@ alCentral
     .on('click', function(d){
     
     console.log(d.currentTarget.__data__)
+    teamSelected = d.currentTarget.__data__
+    teamPage(teamSelected)
 })
 
 
@@ -237,39 +263,169 @@ alEast
             .on('click', function(d){
             
             console.log(d.currentTarget.__data__)
+            teamSelected = d.currentTarget.__data__
+            teamPage(teamSelected)
         })
 
+const teamsNamesArrayObjects = [
+  {"Arizona Diamondbacks":'ARI'},
+  {"Atlanta Braves":'ATL'},
+  {"Baltimore Orioles":'BAL'},
+  {"Boston Red Sox":'BOS'},
+  {"Chicago White Sox":'CHW'},
+  {"Chicago Cubs": 'CHC'},
+  {"Cincinnati Reds":'CIN'},
+  {"Cleveland Indians":'CLE'},
+  {"Colorado Rockies":'COL'},
+  {"Detroit Tigers":'DET'},
+  {"Houston Astros":'HOU'},
+  {"Kansas City Royals":'KCR'},
+  {"Los Angeles Angels": 'LAA'},
+  {"Los Angeles Dodgers":'LAD'},
+  {"Miami Marlins":'MIA'},
+  {"Milwaukee Brewers":'MIL'},
+  {"Minnesota Twins":'MIN'},
+  {"New York Yankees":'NYY'},
+  {"New York Mets": 'NYM'},
+  {"Oakland Athletics":'OAK'},
+  {"Philadelphia Phillies":'PHI'},
+  {"Pittsburgh Pirates":'PIT'},
+  {"San Diego Padres":'SDP'},
+  {"San Francisco Giants":'SFG'},
+  {"Seattle Mariners":'SEA'},
+  {"St. Louis Cardinals":'STL'},
+  {"Tampa Bay Rays":'TBR'},
+  {"Texas Rangers":'TEX'},
+  {"Toronto Blue Jays":'TOR'},
+  {"Washington Nationals":'WSN'},
 
+]
 
-// .selectAll('div').data(teamArrays)
-// .enter().append('ul')
-// selectAll('ul').data(function(d, i){return d})
-//     .text(d => d)
-//     .attr('class', 'team-names')
-//     .attr('value', d => d)
-//     .on('click', function(d){
-//     
-//     console.log(d.currentTarget.__data__)
-// })
+const teamsNamesObjects = {
+ "Arizona Diamondbacks": 'ARI',
+ "Atlanta Braves": 'ATL',
+ "Baltimore Orioles": 'BAL',
+ "Boston Red Sox": 'BOS',
+ "Chicago White Sox": 'CHW',
+ "Chicago Cubs": 'CHC',
+ "Cincinnati Reds": 'CIN',
+ "Cleveland Indians": 'CLE',
+ "Colorado Rockies": 'COL',
+ "Detroit Tigers": 'DET',
+ "Houston Astros": 'HOU',
+ "Kansas City Royals": 'KCR',
+ "Los Angeles Angels": 'LAA',
+ "Los Angeles Dodgers": 'LAD',
+ "Miami Marlins": 'MIA',
+ "Milwaukee Brewers": 'MIL',
+ "Minnesota Twins": 'MIN',
+ "New York Yankees": 'NYY',
+ "New York Mets": 'NYM',
+ "Oakland Athletics": 'OAK',
+ "Philadelphia Phillies": 'PHI',
+ "Pittsburgh Pirates": 'PIT',
+ "San Diego Padres": 'SDP',
+ "San Francisco Giants": 'SFG',
+ "Seattle Mariners": 'SEA',
+ "St. Louis Cardinals": 'STL',
+ "Tampa Bay Rays": 'TBR',
+ "Texas Rangers": 'TEX',
+ "Toronto Blue Jays": 'TOR',
+ "Washington Nationals": 'WSN',
+  
+}
 
-    
-    
-    
-    
-//     .selectAll('li').data(teamNamesArray)
-//     .enter().append('li')
-//     .text(d => d)
-//     .attr('class', 'team-names')
-//     .attr('value', d => d)
-//     .on('click', function(d){
-//     
-//     console.log(d.currentTarget.__data__)
-// })
-
+const posMap = {}
         
-      
+const teamPage = (team) => {
+    const brefTeam = teamsNamesObjects[team]
+    findTeamPlayers(brefTeam)
+    
+}      
        
       
-     
-       
+const findTeamPlayers = (brefTeam) => {
+    const team = playersArray.filter(players => players.Team === brefTeam)
+    console.log(team)
+    removeChartFn();
+    removeTable();
+    infoContainer
+    .style('display', 'none')
+    createPlayerIndexArrays(team)
+}
+
+const createPlayerIndexArrays = (team) =>{
+    const teamPlayersArr = [];
+    let playersArr = [];
+    team.forEach( player => {
+        
+        // const statKeys = ["Name", "Age","Raw Games","PA","AB","Raw Runs Scored","Raw Hits","2B","3B","Raw HR","Raw RBI","SB","CS","BB","SO","Raw BA","Raw OBP","Raw SLG","Raw OPS","Raw OPS+","TB","GDP","HBP","SH","SF","IBB","Pos Summary"]
+        const infoKeys = ["Name", "Age", "Pos Summary", "Team"]
+            for (const key in player){
+                if (infoKeys.includes(key)){
+                    playersArr.push({
+                        key:key,
+                        value: player[key]
+                    })
+                }
+            }
+            teamPlayersArr.push(playersArr)
+            playersArr = []
+    })
+    console.log("teamPlayersArr")
+    console.log(teamPlayersArr)
+    render(teamPlayersArr)
+}
+
+const render = (teamPlayersArr) => {
+    playerDiv.style('display', 'block')
+
+           const ul = playerDiv.selectAll('ul').data(teamPlayersArr)
+            ul
+            .enter().append('ul').merge(ul)
+            .attr('class', 'player-ul')
+            .style('display', 'block')
+            .on('click', function(d){
+                debugger
+                const playerName = this.__data__[0].value
+                const player = playersArray.find(player => player.Name === playerName)
+                console.log(playerName)
+                inputName(playerName)
+                yearSelecterFn(year, player)
+                playerParagraph.textContent = player.Name
+            teamParagraph.textContent = player.Team
+            seasonParagraph.textContent = year
+            ul.style('display', 'none')
+            })
+           
+            const li = ul.selectAll('li').data(function(d){
+                
+              return  d
+            })
+            li.enter().append('li').merge(li)
+            .attr('class', 'player-info-li')
+            .attr('value', d => d[0])
+            .text( d => `${d.key}: ${d.value}`)
+          
+            ul.exit().remove()
+            li.exit().remove()
+        // const playersUl = d3.selectAll('.player-ul')
+        // playersUl.merge(playersUl).transition().duration(1000)
+        // playersUl.exit().remove()
+}
+    // mainContainer
+    //     .append('div')
+    //     .attr('class', 'team-players-div')
+    //         .selectAll('ul').data(teams)
+    //         .enter().append('ul')
+           
+    //         .attr('class', 'player-ul')
+    //         .selectAll('li').data(function(d){
+    //             debugger
+    //             d
+    //         })
+    //         .enter().append('li')
+    //         .text( d => d)
+            
+
       

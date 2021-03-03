@@ -9,13 +9,14 @@ import * as d3 from 'd3';
 import playerData from "./scripts/search";
 import statsTable from './scripts/statstable';
 import Teams from './scripts/teams';
-// import {lineChart} from "./scripts/lollipopchart"
+
 import yearSelecter, { importPlayers } from './scripts/year_selector'
 let selecter = 1
 let player;
+
 const toggleButton = select('#percentage-ranking-toggle-button')
 const removeChart = select('.remove-chart-button')
-
+const teamIndex = select ('.team-players-div')
 const updateSelecter = () => {
         
     if (selecter === 0){
@@ -122,6 +123,9 @@ const update = data => {
      .style('display', "block")
     const g = svg.selectAll('g')
      .attr('display', "display")
+     teamIndex
+     .style('display', "none")
+
 
         const xKeys = d => d.key
         const yValues = d => d.value
@@ -180,7 +184,7 @@ const update = data => {
  }
  
  export const createPlayerArraysRanking = (playerObject) => {
-     
+     debugger
     const xKeysRanking = ["Games Ranking","Runs Ranking", "Hits Ranking","HR Ranking", "RBI Ranking", "BA Ranking", "OBP Ranking", "SLG Ranking", "OPS Ranking", "OPS+ Ranking"]
     const playerArrayRanking = []
 
@@ -207,7 +211,7 @@ const update = data => {
 }
 
   
-const removeChartFn = () => {
+export const removeChartFn = () => {
     const u = svg.selectAll('rect').remove()
     const g = svg.selectAll('g')
         .attr('display', "none")
@@ -217,9 +221,9 @@ const removeChartFn = () => {
         .style('display', "none")
 }
    
-const removeTable = () => {
+export const removeTable = () => {
         let table = document.querySelector('#stats-table')
-        table.remove()  
+        if(table) table.remove()  
 }
 
  removeChart
