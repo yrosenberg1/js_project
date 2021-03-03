@@ -19,6 +19,7 @@ line-height: 80px;
     right: -400px;
     top: 76px;
     padding-bottom: 15px;
+    cursor: auto;
 }
 
 .dropdown-content-container div{
@@ -33,6 +34,7 @@ line-height: 80px;
     line-height: 3;
     text-align: start;
     padding-left: 10px;
+    cursor: default;
 } 
 
 .teams:hover .dropdown-content-container{
@@ -52,4 +54,5 @@ text-align: start;
     background-color:#057aff;
     color: wheat;
     border-radius: 5px;
+    cursor: pointer;
 }
