@@ -132,7 +132,7 @@ const NlWestArray =
 
 
   
-const divisionArray = ["AL East", "AL Central", "AL West", "NL East", "NL Central", "NL West"]
+const divisionArray = ["AL EAST", "AL CENTRAL", "AL WEST", "NL EAST", "NL CENTRAL", "NL WEST"]
 const nlArray = [ "NL East Division", "NL Central Division", "NL West"]
 const alArray = ["AL East Division", "AL Central Division", "AL West Division"]
 
@@ -153,7 +153,7 @@ TeamsDropdown
 .append('div')
     .attr('class', 'dropdown-content-container')
     .selectAll('div').data(divisionArray)
-    .enter().append('div')
+    .enter().append('div').append('p')
     .text( d => d)
     
     
@@ -166,18 +166,19 @@ const divisionDivs = dropdownTeamsContainer.querySelectorAll('div');
 console.log("divisionDivs")
 console.log(divisionDivs)
 divisionDivs.forEach(div => {
-    
-    div.setAttribute('class', `${div.innerHTML}-container`)
+    debugger
+    // div.setAttribute('class', `${div.innerHTML}-container`)
+    div.setAttribute('class', `${div.textContent}-container`)
 })
 
     
 ;
-const alEast =d3.select('.AL.East-container')
-const alCentral =d3.select('.AL.Central-container')
-const alWest =d3.select('.AL.West-container')
-const NlEast =d3.select('.NL.East-container')
-const NlCentral =d3.select('.NL.Central-container')
-const NlWest =d3.select('.NL.West-container')
+const alEast =d3.select('.AL.EAST-container')
+const alCentral =d3.select('.AL.CENTRAL-container')
+const alWest =d3.select('.AL.WEST-container')
+const NlEast =d3.select('.NL.EAST-container')
+const NlCentral =d3.select('.NL.CENTRAL-container')
+const NlWest =d3.select('.NL.WEST-container')
 
 NlWest
 .append('ul')
