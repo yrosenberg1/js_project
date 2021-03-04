@@ -13,7 +13,7 @@ display: block;
     font-family: "Times New Roman";
     width: 150px;
 }
-button.year-selecter-btn:focus, button.year-selecter-btn:hover, button.year-selecter-btn:active {
+button.year-selecter-btn:focus, button.year-selecter-btn:focus-within, button.year-selecter-btn:hover, button.year-selecter-btn:active {
     outline: none;
     color: white;
 }

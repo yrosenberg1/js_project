@@ -1,0 +1,30 @@
+rect {
+    fill: #041e42;
+    stroke:  #bb0d3e;
+    stroke-width: 1px;
+}
+
+.svg-box{
+    margin: auto;
+    margin-top: 15px;
+    border: 5px solid #041e42;
+}
+text{
+    font-size: 16px;
+    color: #bb0d3e;
+    font-weight: 550;
+   
+}
+
+.chart-header-text{
+    font-size: 30px;
+    font-weight: 700;
+    text-align: center;
+    font-style: oblique;
+}
+
+.yAxis-text-percentile, .yAxis-text-ranking{
+    font-size: 22px;
+    font-style: italic;
+    font-weight: 600;
+}

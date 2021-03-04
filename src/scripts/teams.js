@@ -56,18 +56,7 @@ const teamNamesArray =
   
 ];     
 playerDiv.selectAll('ul').data(teamNamesArray).enter().append('ul').style('display', 'none')
-// TeamsDropdown
-//     .append('div')
-//         .attr('class', 'dropdown-content-container')
-//         .selectAll('li').data(teamNamesArray)
-//         .enter().append('li')
-//         .text(d => d)
-//         .attr('class', 'team-names')
-//         .attr('value', d => d)
-//         .on('click', function(d){
-//         
-//         console.log(d.currentTarget.__data__)
-//     })
+
 
 const AlEastArray = 
  [
@@ -136,18 +125,6 @@ const divisionArray = ["AL EAST", "AL CENTRAL", "AL WEST", "NL EAST", "NL CENTRA
 const nlArray = [ "NL East Division", "NL Central Division", "NL West"]
 const alArray = ["AL East Division", "AL Central Division", "AL West Division"]
 
-// TeamsDropdown
-//     .append('div')
-//     .attr('class', 'dropdown-content-container')
-//          .selectAll('div').data(nlArray)
-//             .enter().append('div')
-//             .attr("class", 'nl-div-container')
-//             .text( d => d)
-//         .selectAll('div').data(alArray)
-//           .enter().append('div')
-//          .attr("class", 'al-div-container')
-//          .text( d => d)
-    
     
 TeamsDropdown
 .append('div')
@@ -163,11 +140,8 @@ const dropdownTeamsContainer = document.querySelector('.dropdown-content-contain
 
 
 const divisionDivs = dropdownTeamsContainer.querySelectorAll('div');
-console.log("divisionDivs")
-console.log(divisionDivs)
+
 divisionDivs.forEach(div => {
-    
-    // div.setAttribute('class', `${div.innerHTML}-container`)
     div.setAttribute('class', `${div.textContent}-container`)
 })
 
@@ -410,23 +384,7 @@ const render = (teamPlayersArr) => {
           
             ul.exit().remove()
             li.exit().remove()
-        // const playersUl = d3.selectAll('.player-ul')
-        // playersUl.merge(playersUl).transition().duration(1000)
-        // playersUl.exit().remove()
+      
 }
-    // mainContainer
-    //     .append('div')
-    //     .attr('class', 'team-players-div')
-    //         .selectAll('ul').data(teams)
-    //         .enter().append('ul')
-           
-    //         .attr('class', 'player-ul')
-    //         .selectAll('li').data(function(d){
-    //             
-    //             d
-    //         })
-    //         .enter().append('li')
-    //         .text( d => d)
-            
-
+    
       

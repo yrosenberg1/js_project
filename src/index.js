@@ -1,11 +1,12 @@
-import { select, scaleLinear, max, scaleBand, axisLeft, axisBottom  } from "d3";
+import { select, format, scaleLinear, max, scaleBand, axisLeft, axisBottom  } from "d3";
  import "./styles/reset.scss";
 import "./styles/index.scss";
 import "./styles/navbar.scss";
 import "./styles/search.scss";
 import "./styles/chart.scss";
 import "./styles/year_selecter.scss";
-import "./styles/main.scss"
+import "./styles/main.scss";
+import "./styles/table.scss";
 import * as d3 from 'd3';
 import playerData from "./scripts/search";
 import statsTable from './scripts/statstable';
@@ -36,7 +37,7 @@ const updateSelecter = () => {
       switch (selecter) {
           case 1:
             toggleButton
-            .text('by Ranking')
+            .text('Ranking')
             .style('opacity', 1)
             .style('display', "block")
             
@@ -44,7 +45,7 @@ const updateSelecter = () => {
               break;
             case 0:
                 toggleButton
-                .text('by Percentage')
+                .text('Percentile')
                 .style('opacity', 1)
                 .attr('display', "block")
                 
@@ -52,35 +53,17 @@ const updateSelecter = () => {
           default:
               break;
       } 
-        // if (selecter === 1){
-        //     toggleButton
-        //     .text('by Ranking')
-        //     .style('opacity', 1)
-        //     .style('display', "block")
-        // createPlayerArrayPercentage(playerObject);
-        // } else {
-        //     toggleButton
-        //     .text('by Percentage')
-        //     .style('opacity', 1)
-        //     .attr('display', "block")
-        // createPlayerArraysRanking(playerObject)
-        // }
-        player = playerObject
         
-       
+        player = playerObject
         
     }
     
-  
-
     toggleButton
         .on('click', updateSelecter)
         
-
-
     const width = 1000
     const height = 500
-    const margin = {left: 100, top: 30, right: 100, bottom: 50}
+    const margin = {left: 100, top: 60, right: 100, bottom: 50}
     const chartWidth = width - margin.left - margin.right;
     const chartHeight = height - margin.top - margin.bottom;
 
@@ -92,6 +75,12 @@ const updateSelecter = () => {
     .append('g')
         .attr(`transform`, `translate(${margin.left}, ${margin.top})`)
     
+        svg.append('text')
+        .attr('y', -25)
+        .attr('x', 150)
+        .attr('class', 'chart-header-text')
+        .text(`Player Performance Relative to League`)
+        .style('fill', '#bb0d3e')
         
     const xScale = scaleBand()
      
@@ -114,13 +103,30 @@ const updateSelecter = () => {
         const yAxis = svg.append('g')
             .attr("class", "yAxis")
            
+      const yPercentile = yAxis.append('text')
+            .attr('y', 0)
+            .attr('x', 0)
+            .attr('class', 'yAxis-text-percentile')
+            .text(`Percentile`)
+            .style('fill', '#bb0d3e')
+            .style('display', "none")
+            .attr('transform', 'rotate(-90) translate(-120, -70)')
+            
 
+     const yRanking = yAxis.append('text')
+            // .attr('y', 0)
+            // .attr('x', 0)
+            .attr('class', 'yAxis-text-ranking')
+            .text(`Ranking`)
+            .style('fill', '#bb0d3e')
+            .style('display', "none")
+            // .attr(`transform`, `translate(30, 30)`)
+            .attr('transform', 'rotate(-90) translate(-160, -70)')
 
-    
 const update = data => {
     
-    removeChart
-    .style('display', "block")
+    // removeChart
+    // .style('display', "block")
     toggleButton
      .style('display', "block")
     const g = svg.selectAll('g')
@@ -135,14 +141,27 @@ const update = data => {
        
     if (setting === "ranking"){
         yScale.domain([700, 0])
+       
+        yRanking.transition().duration(1000).style('display', 'block')
+        yPercentile.transition().duration(1000).style('display', 'none')
+        yAxis.transition().duration(1000).call(axisLeft(yScale).tickSize(-chartWidth))
+        
     } else {
-    yScale.domain([0, 100])
+    yScale.domain([0, 1])
+    yRanking.transition().duration(1000).style('display', 'none')
+    yPercentile.transition().duration(1000).style('display', 'block')
+    yAxis.transition().duration(1000)
+        .call(axisLeft(yScale).tickFormat(format(".0%")).tickSize(-chartWidth))
+        
+    
     }
+    
+
         xScale.domain(data.map(xKeys))
        xAxis.transition().duration(1000).call(axisBottom(xScale))
-
-        yAxis.transition().duration(1000).call(axisLeft(yScale))
     
+      xAxis.selectAll('.domain, .tick line').remove()
+      yAxis.selectAll('.domain').remove()
     const u = svg.selectAll('rect').data(data)
     //  u
     //  .attr(`transform`, `translate(${margin.left},${margin.top})`)
@@ -155,6 +174,7 @@ const update = data => {
     // .attr('height', yScale(xKeys)) 
      .attr('height', d => chartHeight - yScale(yValues(d)))
     
+    yAxis.merge(yAxis).exit().remove()
     u.exit().remove()
 }
     
@@ -169,14 +189,14 @@ const update = data => {
    
 
  export const createPlayerArrayPercentage = playerObject => {
-     
-    const xKeysPercentage = ["Games", "Runs Scored", "Hits", "HR", "RBI", "BA", "OBP", "SLG", "OPS", "OPS+"]
+  debugger   
+    const xKeysPercentage = ["Games", "Runs", "Hits", "HR", "RBI", "BA", "OBP", "SLG", "OPS", "OPS+"]
     const playerArrayPercentage = []
     for (const key in playerObject){
         if (xKeysPercentage.includes(key)){
         playerArrayPercentage.push({
             key:key,
-            value: playerObject[key] * 100,
+            value: playerObject[key],
             setting: "percentage" 
         })
     }}
@@ -186,7 +206,7 @@ const update = data => {
  }
  
  export const createPlayerArraysRanking = (playerObject) => {
-     debugger
+     
     const xKeysRanking = ["Games Ranking","Runs Ranking", "Hits Ranking","HR Ranking", "RBI Ranking", "BA Ranking", "OBP Ranking", "SLG Ranking", "OPS Ranking", "OPS+ Ranking"]
     const playerArrayRanking = []
 

@@ -70,7 +70,7 @@ import {teamPlayers} from "./teams"
         
         searchBar.onclick = () => {
             if (!playerObject){
-                searchBar.value = "No Matches Found"
+                searchBar.value = "No Player Found"
                 playerSearchInput.classList.remove('active')
                
             }

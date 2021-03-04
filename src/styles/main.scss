@@ -14,16 +14,43 @@
 
 .player-info-container li{
     list-style: none;
-    color: red;
+    color: #bb0d3e;
+    font-size: 20px;
     font-size: 20px;
     text-align:center; 
   }
 
-.Ranking-Percentile-button-container{
-    width: fit-content;
+
+.Ranking-Percentile-button-container {
+ 
+  width: fit-content;
+  margin: auto;
+
+}
+
+#percentage-ranking-toggle-button{
+  opacity: 0;
+  border-radius: 50%;
+  
+  border-radius: 50%;
+  height: 75px;
+  width: 92px;
+  text-align: center;
+  background: #041e42;
+  color: white;
+  border: 2px solid #bb0d3e;
+  font-style: italic;
+  font-size: 16px;
+  font-weight: 800;
+
+}
+
+#percentage-ranking-toggle-button:focus{
+  outline: none;
 }
 
 .chart-container{
   display: flex;
   flex-direction: column;
+  margin: 20px;
 }
