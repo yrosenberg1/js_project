@@ -55,7 +55,7 @@ export const importPlayers = players => {
 }
 
 yearSelecterButton
-    .text('Select Season:')
+    .text('Season')
 
 yearSelecterBtnContainer
     .append('div')
@@ -109,7 +109,7 @@ export const yearSelecterFn = (value, player) => {
         removeChartFn();
         removeTable();
         if (playerName){
-            debugger
+            
         NoSeason
         .style('display', 'block')
         infoContainer

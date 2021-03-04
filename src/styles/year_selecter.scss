@@ -1,13 +1,14 @@
 .Year-selector-btn-container{
 position: relative;
 display: block;
+
 }
 
 .year-selecter-btn{
-    background-color: #9092df;
+    background-color:#041e42;
     color:#bb0d3e;
     padding: 12px;
-    font-size: 14px;
+    font-size: 40px;
     border: none;
 
 }
@@ -15,8 +16,8 @@ display: block;
 .season-dropdown-content{
     display: none;
     position: absolute;
-    background-color: #9092df;
-    min-width: 118.16px;
+    background-color: #041e42;
+    min-width: 158.83px;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     z-index: 1;
 }
@@ -32,11 +33,13 @@ display: block;
     text-decoration: none;
     display: block;
     width: -webkit-fill-available;
-    background-color:  #9092df;
+    background-color:  #041e42;
+    font-size:  20px;
 
 }
 
 .season-dropdown-content button:hover{
-    background-color:#787ceb;
+    background-color:#bb0d3e;
+    color: ghostwhite;
 }
 

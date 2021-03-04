@@ -1,7 +1,8 @@
 .nav-bar-container{
     height: 70px;
     width: auto;
-    background-color: rgb(144, 146, 223);
+   /* background-color: rgb(144, 146, 223); */
+    background-color: #041e42;
     display: flex;
 flex-direction: row;
 }
@@ -34,6 +35,9 @@ flex-direction: row;
 .center-navbar{
     width: 1000px;
     height: 70px;
+    align-items: center;
+    display: flex;
+    justify-content: space-evenly
 }
 .right-navbar{
     color: #bf0d3e;

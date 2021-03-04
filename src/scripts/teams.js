@@ -166,7 +166,7 @@ const divisionDivs = dropdownTeamsContainer.querySelectorAll('div');
 console.log("divisionDivs")
 console.log(divisionDivs)
 divisionDivs.forEach(div => {
-    debugger
+    
     // div.setAttribute('class', `${div.innerHTML}-container`)
     div.setAttribute('class', `${div.textContent}-container`)
 })
@@ -387,7 +387,7 @@ const render = (teamPlayersArr) => {
             .attr('class', 'player-ul')
             .style('display', 'block')
             .on('click', function(d){
-                debugger
+                
                 const playerName = this.__data__[0].value
                 const player = playersArray.find(player => player.Name === playerName)
                 console.log(playerName)
@@ -422,7 +422,7 @@ const render = (teamPlayersArr) => {
            
     //         .attr('class', 'player-ul')
     //         .selectAll('li').data(function(d){
-    //             debugger
+    //             
     //             d
     //         })
     //         .enter().append('li')

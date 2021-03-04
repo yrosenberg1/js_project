@@ -5,6 +5,7 @@ import "./styles/navbar.scss";
 import "./styles/search.scss";
 import "./styles/chart.scss";
 import "./styles/year_selecter.scss";
+import "./styles/main.scss"
 import * as d3 from 'd3';
 import playerData from "./scripts/search";
 import statsTable from './scripts/statstable';
@@ -87,6 +88,7 @@ const updateSelecter = () => {
     .append("svg")
         .attr("width", width)
         .attr("height", height)
+        .attr('class', 'svg-box')
     .append('g')
         .attr(`transform`, `translate(${margin.left}, ${margin.top})`)
     

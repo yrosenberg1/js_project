@@ -1,0 +1,29 @@
+.player-info-container{
+      /* border: #041e42 1px solid; */
+      display: flex;
+      flex-direction: column;
+      /* height: 50px; */
+      line-height: 1.5;
+      width: 500px;
+      box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 20%);
+      margin: auto;
+      margin-top: 20px;
+
+
+}
+
+.player-info-container li{
+    list-style: none;
+    color: red;
+    font-size: 20px;
+    text-align:center; 
+  }
+
+.Ranking-Percentile-button-container{
+    width: fit-content;
+}
+
+.chart-container{
+  display: flex;
+  flex-direction: column;
+}
