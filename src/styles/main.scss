@@ -1,3 +1,6 @@
+.main-content-container{
+  height: 783px;
+}
 .player-info-container{
       /* border: #041e42 1px solid; */
       display: flex;
@@ -42,9 +45,19 @@
   font-style: italic;
   font-size: 16px;
   font-weight: 800;
+  cursor: pointer;
 
 }
+#percentage-ranking-toggle-button:hover{
+  color: #BF0D3E;
+  
+ 
+  background: #031424;
+}
 
+#percentage-ranking-toggle-button:active{
+  transform: scale(0.95);
+}
 #percentage-ranking-toggle-button:focus{
   outline: none;
 }

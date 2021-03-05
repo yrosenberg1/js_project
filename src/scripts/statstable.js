@@ -1,6 +1,6 @@
 import * as d3 from 'd3';
-const tableContainer = d3.select(".table-container")
- 
+// const tableContainer = d3.select(".table-container")
+const tableContainer = document.querySelector(".table-container")
 // const statsTable = playerObject => {
 //     console.log(playerObject)
 //     const table = tableContainer.append('table')
@@ -38,7 +38,7 @@ export const statsTable = (playerObject) => {
          }  
     }
     table.setAttribute("id", "stats-table");
-    document.body.appendChild(table);
+    tableContainer.appendChild(table);
 
     const tableHeaderRow = document.createElement("tr")
 tableHeaderRow.setAttribute("class", "table-header-row" )
@@ -63,7 +63,12 @@ table.appendChild(tableHeaderRow)
     for (const key of tableHeader){
         const cell = document.createElement('td')
         if (headerNames.includes(key)){
-        const cellData = playerObject[key]
+            let cellData = ""
+            if (playerObject[key] === null){
+                cellData = 'N/A'
+            } else
+         cellData = playerObject[key]
+        // if (cellData === null) cellData = "N/A" 
         cell.innerText = cellData
         tr.appendChild(cell)
         

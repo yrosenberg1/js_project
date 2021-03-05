@@ -60,3 +60,22 @@ flex-direction: row;
     color: #bf0d3e;
     font-size: 40px;
 }
+
+.random-button{
+    color: #bf0d3e;
+    background: #041e42;
+    font-size: 25px;
+    padding: 7px;
+    cursor: pointer;
+    outline: #BF0D3E 3px solid;
+    font-weight: 700;
+}
+
+.random-button:hover{
+    color:white;
+    cursor: pointer;
+}
+
+.random-button:active{
+    transform: scale(0.95);
+}

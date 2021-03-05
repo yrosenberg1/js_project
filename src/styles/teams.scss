@@ -36,7 +36,9 @@ line-height: 80px;
     padding-left: 10px;
     cursor: default;
 } 
-
+.teams:hover > p{
+    color: white;
+}
 .teams:hover .dropdown-content-container{
     display: block;
 }

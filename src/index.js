@@ -64,7 +64,7 @@ const updateSelecter = () => {
         playerInfoUl
          .style('display', "block")
 
-         debugger
+         
     }
 
     

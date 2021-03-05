@@ -361,6 +361,9 @@ const createPlayerIndexArrays = (team) =>{
                     attribute.key = attribute.key.replace("Raw ", "")
                     attribute.key = attribute.key.replace(" Scored", "")
                    }
+                   if (attribute.value === null){
+                       attribute.value = "N/A"
+                   }
             })
            
 

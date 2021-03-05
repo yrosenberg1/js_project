@@ -12,6 +12,7 @@ display: block;
     border: none;
     font-family: "Times New Roman";
     width: 150px;
+    cursor: pointer;
 }
 button.year-selecter-btn:focus, button.year-selecter-btn:focus-within, button.year-selecter-btn:hover, button.year-selecter-btn:active {
     outline: none;
@@ -45,6 +46,7 @@ button.year-selecter-btn:focus, button.year-selecter-btn:focus-within, button.ye
     border: none;
     /* border-bottom: 1px solid #bb0d3e; */
     border-top: 1px solid;
+    cursor: pointer;
 
 }
 

@@ -6,7 +6,7 @@ import * as d3 from 'd3';
 const randomizerDiv = document.querySelector('.randomizer-container')
 let randomizeButton = document.createElement('button')
         randomizeButton.setAttribute('class', 'random-button')
-        randomizeButton.textContent = 'Select a Random Player'
+        randomizeButton.textContent = 'Random Player Selecter'
 randomizerDiv.appendChild(randomizeButton)
 const NoSeason = d3.select('.No-season-results-div')
 let nameContainer = document.querySelector('.player-info-container')

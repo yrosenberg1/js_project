@@ -121,7 +121,7 @@ export const yearSelecterFn = (value, player) => {
         .style('display', 'none')
         playerInfoUl.style.display = 'none'
         }
-    debugger
+    
     }
    return season
 }
