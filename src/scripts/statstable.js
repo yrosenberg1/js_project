@@ -27,7 +27,7 @@ const tableContainer = d3.select(".table-container")
 // }
 let table = document.createElement("table")
 
-const statsTable = (playerObject) => {
+export const statsTable = (playerObject) => {
     
     
     if (table.rows.length){

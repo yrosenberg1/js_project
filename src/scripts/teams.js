@@ -1,13 +1,16 @@
 import * as d3 from "d3";
 import { selectAll } from "d3";
 import {yearSelecterFn, importPlayers, inputName} from "./year_selector";
-
+import {statsTable} from './statstable';
 import {createPlayerArrays, removeChartFn, removeTable } from "../index"
 import '../styles/teams.scss';
 
 const TeamsDropdown = d3.select('.teams')
 const mainContainer = d3.select('.main-content-container')
 const playerDiv =  mainContainer.append('div').attr('class', 'team-players-div')
+playerDiv.append('h1').attr('class', 'team-name-header')
+const chartContainer = d3.select('.chart-container')
+const teamHeader = document.createElement("h1");
 
 let teamSelected;
 let playersArray;
@@ -15,6 +18,7 @@ let year
 let playerParagraph = document.querySelector('.player-name')
 let teamParagraph = document.querySelector('.team-name')
 let seasonParagraph = document.querySelector('.season-name')
+
 const infoContainer = d3.select('.player-info-container')
 export const teamPlayers = (players, season) =>{
 playersArray = players
@@ -313,8 +317,10 @@ const teamsNamesObjects = {
 const posMap = {}
         
 const teamPage = (team) => {
+    playerDiv.select('h1').html( year + " " + team)
     const brefTeam = teamsNamesObjects[team]
     findTeamPlayers(brefTeam)
+
     
 }      
        
@@ -325,30 +331,42 @@ const findTeamPlayers = (brefTeam) => {
     removeChartFn();
     removeTable();
     infoContainer
-    .style('display', 'none')
+     .style('display', 'none')
+    chartContainer
+     .style('display', 'none')
     createPlayerIndexArrays(team)
+
 }
 
 const createPlayerIndexArrays = (team) =>{
+    
     const teamPlayersArr = [];
     let playersArr = [];
     team.forEach( player => {
         
         // const statKeys = ["Name", "Age","Raw Games","PA","AB","Raw Runs Scored","Raw Hits","2B","3B","Raw HR","Raw RBI","SB","CS","BB","SO","Raw BA","Raw OBP","Raw SLG","Raw OPS","Raw OPS+","TB","GDP","HBP","SH","SF","IBB","Pos Summary"]
-        const infoKeys = ["Name", "Age", "Pos Summary", "Team"]
+        const infoKeys =  ["Name","Age","Pos Summary","Raw Games","PA","AB","Raw Runs Scored","Raw Hits","2B","3B","Raw HR","Raw RBI","SB","CS","BB","SO","Raw BA","Raw OBP","Raw SLG","Raw OPS","Raw OPS+","TB","GDP","HBP","SH","SF","IBB"]
             for (const key in player){
                 if (infoKeys.includes(key)){
+                   
                     playersArr.push({
                         key:key,
                         value: player[key]
                     })
                 }
             }
+            playersArr.forEach(attribute => {
+                if (attribute.key.includes("Raw")){
+                    attribute.key = attribute.key.replace("Raw ", "")
+                   }
+            })
+           
             teamPlayersArr.push(playersArr)
             playersArr = []
     })
     console.log("teamPlayersArr")
     console.log(teamPlayersArr)
+    
     render(teamPlayersArr)
 }
 
