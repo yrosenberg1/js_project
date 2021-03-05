@@ -19,6 +19,9 @@ let player;
 const toggleButton = select('#percentage-ranking-toggle-button')
 const removeChart = select('.remove-chart-button')
 const teamIndex = select ('.team-players-div')
+const chartContainer = d3.select('.chart-container')
+const playerInfoUl = d3.select('.player-info-ul')
+
 const updateSelecter = () => {
         
     if (selecter === 0){
@@ -55,8 +58,15 @@ const updateSelecter = () => {
       } 
         
         player = playerObject
-        
+
+        chartContainer
+         .style('display', "flex")
+        playerInfoUl
+         .style('display', "block")
+
+         debugger
     }
+
     
     toggleButton
         .on('click', updateSelecter)
@@ -189,7 +199,7 @@ const update = data => {
    
 
  export const createPlayerArrayPercentage = playerObject => {
-  debugger   
+     
     const xKeysPercentage = ["Games", "Runs", "Hits", "HR", "RBI", "BA", "OBP", "SLG", "OPS", "OPS+"]
     const playerArrayPercentage = []
     for (const key in playerObject){

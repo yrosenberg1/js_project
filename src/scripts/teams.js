@@ -1,7 +1,7 @@
 import * as d3 from "d3";
 import { selectAll } from "d3";
 import {yearSelecterFn, importPlayers, inputName} from "./year_selector";
-import {statsTable} from './statstable';
+
 import {createPlayerArrays, removeChartFn, removeTable } from "../index"
 import '../styles/teams.scss';
 
@@ -59,7 +59,7 @@ const teamNamesArray =
   "Washington Nationals",
   
 ];     
-playerDiv.selectAll('ul').data(teamNamesArray).enter().append('ul').style('display', 'none')
+// playerDiv.selectAll('ul').data(teamNamesArray).enter().append('ul').style('display', 'none')
 
 
 const AlEastArray = 
@@ -317,6 +317,8 @@ const teamsNamesObjects = {
 const posMap = {}
         
 const teamPage = (team) => {
+    playerDiv
+    .style('display', 'flex')
     playerDiv.select('h1').html( year + " " + team)
     const brefTeam = teamsNamesObjects[team]
     findTeamPlayers(brefTeam)
@@ -345,10 +347,9 @@ const createPlayerIndexArrays = (team) =>{
     team.forEach( player => {
         
         // const statKeys = ["Name", "Age","Raw Games","PA","AB","Raw Runs Scored","Raw Hits","2B","3B","Raw HR","Raw RBI","SB","CS","BB","SO","Raw BA","Raw OBP","Raw SLG","Raw OPS","Raw OPS+","TB","GDP","HBP","SH","SF","IBB","Pos Summary"]
-        const infoKeys =  ["Name","Age","Pos Summary","Raw Games","PA","AB","Raw Runs Scored","Raw Hits","2B","3B","Raw HR","Raw RBI","SB","CS","BB","SO","Raw BA","Raw OBP","Raw SLG","Raw OPS","Raw OPS+","TB","GDP","HBP","SH","SF","IBB"]
+        const infoKeys = ["Name", "Age", "Pos Summary","Raw Games","PA","AB","Raw Runs Scored","Raw Hits","2B","3B","Raw HR","Raw RBI","SB","CS","BB","SO","Raw BA","Raw OBP","Raw SLG","Raw OPS","Raw OPS+","TB","GDP","HBP","SH","SF","IBB"]
             for (const key in player){
                 if (infoKeys.includes(key)){
-                   
                     playersArr.push({
                         key:key,
                         value: player[key]
@@ -356,11 +357,13 @@ const createPlayerIndexArrays = (team) =>{
                 }
             }
             playersArr.forEach(attribute => {
-                if (attribute.key.includes("Raw")){
+                if (attribute.key.includes("Raw") || attribute.key.includes("Scored")){
                     attribute.key = attribute.key.replace("Raw ", "")
+                    attribute.key = attribute.key.replace(" Scored", "")
                    }
             })
            
+
             teamPlayersArr.push(playersArr)
             playersArr = []
     })
@@ -371,13 +374,14 @@ const createPlayerIndexArrays = (team) =>{
 }
 
 const render = (teamPlayersArr) => {
-    playerDiv.style('display', 'block')
+    // playerDiv.style('display', 'flex')
+    playerDiv.selectAll('ul').data(teamPlayersArr).enter().append('ul')
 
            const ul = playerDiv.selectAll('ul').data(teamPlayersArr)
             ul
             .enter().append('ul').merge(ul)
             .attr('class', 'player-ul')
-            .style('display', 'block')
+            .style('display', 'flex')
             .on('click', function(d){
                 
                 const playerName = this.__data__[0].value
@@ -398,7 +402,7 @@ const render = (teamPlayersArr) => {
             li.enter().append('li').merge(li)
             .attr('class', 'player-info-li')
             .attr('value', d => d[0])
-            .text( d => `${d.key}: ${d.value}`)
+            .text( d => `${d.key}:  ${d.value}`)
           
             ul.exit().remove()
             li.exit().remove()

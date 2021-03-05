@@ -5,29 +5,33 @@ import {createPlayerArrays, removeChartFn, removeTable } from "../index"
 const infoContainer = d3.select('.player-info-container')
 
 
+
 //  console.log("teamParagraph")
 //  console.log(teamParagraph)
 let nameContainer = document.querySelector('.player-info-container')
+let playerInfoUl = nameContainer.querySelector('.player-info-ul')
+  
 let playerParagraph = document.createElement('li');
 let teamParagraph = document.createElement('li');
 playerParagraph.setAttribute('class', 'player-name')
     teamParagraph.setAttribute('class', 'team-name')
-    nameContainer.appendChild(playerParagraph)
-    nameContainer.appendChild(teamParagraph)
+    
+    playerInfoUl.appendChild(playerParagraph)
+    playerInfoUl.appendChild(teamParagraph)
 const yearSelecterButton = d3.select('.year-selecter-btn')
 const yearSelecterBtnContainer = d3.select('.Year-selector-btn-container')
 // let nameContainer = document.querySelector('.player-info-container')
 let seasonParagraph = document.createElement('li');
 seasonParagraph.setAttribute('class', 'season-name')
-nameContainer.appendChild(seasonParagraph)
+playerInfoUl.appendChild(seasonParagraph)
 // let teamParagraph = nameContainer.querySelector('.team-name')
 
-let chartContainer = document.querySelector('.chart-container')
+const chartContainer = d3.select('.chart-container')
 const NoSeasondiv = document.createElement('div')
 NoSeasondiv.setAttribute('class','No-season-results-div') 
 NoSeasondiv.setAttribute('display','none') 
 
- chartContainer.appendChild(NoSeasondiv)
+nameContainer.appendChild(NoSeasondiv)
 
  const NoSeason = d3.select('.No-season-results-div')
  NoSeason
@@ -35,7 +39,7 @@ NoSeasondiv.setAttribute('display','none')
     .append('p')
         .attr('class', 'no-season-para')
         .attr('display', 'none')
-        .text('No season Found')
+        .text('Season Not Found')
 
 const yearArray = [2020, 2019, 2018, 2017, 2016]
 export let season;
@@ -103,6 +107,7 @@ export const yearSelecterFn = (value, player) => {
     .style('display', 'none')
     infoContainer
     .style('display', 'block')
+    playerInfoUl.style.display = 'block'
   
     } else {
        
@@ -112,10 +117,11 @@ export const yearSelecterFn = (value, player) => {
             
         NoSeason
         .style('display', 'block')
-        infoContainer
+        chartContainer
         .style('display', 'none')
+        playerInfoUl.style.display = 'none'
         }
-
+    debugger
     }
    return season
 }

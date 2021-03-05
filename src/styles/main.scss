@@ -50,7 +50,8 @@
 }
 
 .chart-container{
-  display: flex;
+ /* display: flex; */ 
+ display: none;
   flex-direction: column;
   margin: 20px;
 }
@@ -58,8 +59,41 @@
   display: flex;
   flex-direction: column;
   
+  
+  
 }
-.team-players-div h1{
-margin: auto;
 
+.team-players-div h1 {
+  margin: auto;
+  font-size: 30px;
+  text-align: center;
+  /* margin-top: 20px; */
+  color: #041e42;
+  padding-top: 20px;
+ 
+}
+
+.team-players-div .player-ul{
+  display: flex;
+  justify-content: space-evenly;
+  font-size: 20px;
+  padding: 20px;
+  color:#bb0d3e;
+  
+  border-bottom:  2px solid  #C0C0BB;
+}
+
+.team-players-div ul li{
+  text-align: center;
+  line-height: 1.5;
+  margin-left: 10px;
+  margin-right: 10px;
+ 
+}
+
+.team-players-div .player-ul:hover{
+  background-color:#057aff;
+  color: wheat;
+  border-radius: 5px;
+  cursor: pointer;
 }

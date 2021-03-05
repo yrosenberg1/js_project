@@ -19,7 +19,8 @@ import {teamPlayers} from "./teams"
     const playerSearchInput = document.querySelector('.player-search-input')
     const NoSeason = d3.select('.No-season-results-div')
     const infoContainer = d3.select('.player-info-container')
-
+    const playerInfoUl = d3.select('player-info-ul')
+    debugger
     season
 
    
@@ -108,7 +109,7 @@ import {teamPlayers} from "./teams"
 function choosePlayer(el){
     
     let playerName = el.innerText
-    console.log(playerName)
+    
     searchBar.value = playerName
     
     searchBar.onclick = () => {
