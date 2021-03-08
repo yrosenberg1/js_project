@@ -25,3 +25,13 @@
 .starting-container{
     height: 783px;
 }
+
+.name a{
+    color: white;
+    font-size: 25px;
+    text-decoration: none;
+}
+
+.name:hover{
+    transform: scale(1.3);   
+}
