@@ -11,8 +11,9 @@ import * as d3 from 'd3';
 import playerData from "./scripts/search";
 import statsTable from './scripts/statstable';
 import Teams from './scripts/teams';
+import about from './scripts/about'
 
-import yearSelecter, { importPlayers } from './scripts/year_selector'
+import yearSelecter, { importPlayers, teamPageActive } from './scripts/year_selector'
 let selecter = 1
 let player;
 
@@ -21,6 +22,7 @@ const removeChart = select('.remove-chart-button')
 const teamIndex = select ('.team-players-div')
 const chartContainer = d3.select('.chart-container')
 const playerInfoUl = d3.select('.player-info-ul')
+const starterInfoDiv = d3.select('.starting-container')
 
 const updateSelecter = () => {
         
@@ -58,11 +60,13 @@ const updateSelecter = () => {
       } 
         
         player = playerObject
-
+        teamPageActive(null)
         chartContainer
          .style('display', "flex")
         playerInfoUl
          .style('display', "block")
+         starterInfoDiv
+         .style('display', "none")
 
          
     }

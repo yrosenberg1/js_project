@@ -56,9 +56,13 @@ flex-direction: row;
     font-size: 40px;
 }
 
-.gloss{
+.about{
     color: #bf0d3e;
     font-size: 40px;
+    cursor: pointer;
+}
+.about:hover{
+    color: white;
 }
 
 .random-button{

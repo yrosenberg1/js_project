@@ -61,6 +61,7 @@ import {teamPlayers} from "./teams"
     const  playersNames = players.map(player => player.Name)   
             
         searchBar.addEventListener('keyup', e => {
+            
         const input = e.target.value.toLowerCase();
         let filteredPlayersArray = []
         if (e.keyCode === 13){

@@ -1,17 +1,17 @@
 .main-content-container{
-  height: 783px;
+  /* height: 783px; */
 }
 .player-info-container{
       /* border: #041e42 1px solid; */
-      display: flex;
+      display: flex; 
       flex-direction: column;
-      /* height: 50px; */
+       height: 90px; 
       line-height: 1.5;
       width: 500px;
       box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 20%);
       margin: auto;
       margin-top: 20px;
-
+display: none;
 
 }
 
@@ -109,4 +109,13 @@
   color: wheat;
   border-radius: 5px;
   cursor: pointer;
+}
+
+.No-season-results-div{
+  margin: auto;
+  margin-top: 100px;
+  border: 5px solid #041e42;
+  width: 1000px;
+  height: 500px;
+  margin-bottom: 80px;
 }

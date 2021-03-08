@@ -2,9 +2,10 @@ import * as d3 from 'd3';
 import {playerData, playerObject} from './search';
 import statsTable from "./statstable"
 import {createPlayerArrays, removeChartFn, removeTable } from "../index"
+import {teamPage} from './teams'
 const infoContainer = d3.select('.player-info-container')
 
-
+const mainContainer = document.querySelector('.main-content-container')
 
 //  console.log("teamParagraph")
 //  console.log(teamParagraph)
@@ -26,12 +27,14 @@ seasonParagraph.setAttribute('class', 'season-name')
 playerInfoUl.appendChild(seasonParagraph)
 // let teamParagraph = nameContainer.querySelector('.team-name')
 
+// const chartContainer = document.querySelector('.chart-container')
 const chartContainer = d3.select('.chart-container')
 const NoSeasondiv = document.createElement('div')
 NoSeasondiv.setAttribute('class','No-season-results-div') 
 NoSeasondiv.setAttribute('display','none') 
 
-nameContainer.appendChild(NoSeasondiv)
+// chartContainer.appendChild(NoSeasondiv)
+mainContainer.appendChild(NoSeasondiv)
 
  const NoSeason = d3.select('.No-season-results-div')
  NoSeason
@@ -45,11 +48,18 @@ const yearArray = [2020, 2019, 2018, 2017, 2016]
 export let season;
 let player;
 let playerName;
+let teamSelected;
 
+export const teamPageActive = (team) => {
+teamSelected = team
+
+}
 export const inputName = (selectedName) => {
+    
   playerName = selectedName
     
 }
+
 
 export const importPlayers = players => {
     
@@ -75,9 +85,13 @@ yearSelecterBtnContainer
              playerData(season)
              
 
-             
+             if (!teamSelected){
+                 
             yearSelecterFn(season, player)
-        
+             } else {
+                 
+                teamPage(teamSelected)
+             }
         })
       
  const dropDownList = d3.select('.season-dropdown-content')
@@ -101,6 +115,7 @@ export const yearSelecterFn = (value, player) => {
         
     statsTable(player)
     createPlayerArrays(player)
+    playerParagraph.textContent = player.Name
     seasonParagraph.textContent = season
     teamParagraph.textContent = player.Team
     NoSeason
@@ -119,7 +134,9 @@ export const yearSelecterFn = (value, player) => {
         .style('display', 'block')
         chartContainer
         .style('display', 'none')
-        playerInfoUl.style.display = 'none'
+        // playerInfoUl.style.display = 'none'
+        seasonParagraph.textContent = season
+        teamParagraph.textContent = " "
         }
     
     }

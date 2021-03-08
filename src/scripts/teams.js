@@ -1,7 +1,6 @@
 import * as d3 from "d3";
 import { selectAll } from "d3";
-import {yearSelecterFn, importPlayers, inputName} from "./year_selector";
-
+import {yearSelecterFn, importPlayers, inputName, teamPageActive} from "./year_selector";
 import {createPlayerArrays, removeChartFn, removeTable } from "../index"
 import '../styles/teams.scss';
 
@@ -11,11 +10,13 @@ const playerDiv =  mainContainer.append('div').attr('class', 'team-players-div')
 playerDiv.append('h1').attr('class', 'team-name-header')
 const chartContainer = d3.select('.chart-container')
 const teamHeader = document.createElement("h1");
+const starterInfoDiv = d3.select('.starting-container')
 
 let teamSelected;
 let playersArray;
 let year
 let playerParagraph = document.querySelector('.player-name')
+
 let teamParagraph = document.querySelector('.team-name')
 let seasonParagraph = document.querySelector('.season-name')
 
@@ -316,12 +317,16 @@ const teamsNamesObjects = {
 
 const posMap = {}
         
-const teamPage = (team) => {
+export const teamPage = (team) => {
+    
     playerDiv
     .style('display', 'flex')
     playerDiv.select('h1').html( year + " " + team)
     const brefTeam = teamsNamesObjects[team]
     findTeamPlayers(brefTeam)
+    teamPageActive(team)
+    starterInfoDiv
+    .style('display', 'none')
 
     
 }      
@@ -387,15 +392,17 @@ const render = (teamPlayersArr) => {
             .style('display', 'flex')
             .on('click', function(d){
                 
+                teamPageActive(null)
                 const playerName = this.__data__[0].value
                 const player = playersArray.find(player => player.Name === playerName)
                 console.log(playerName)
                 inputName(playerName)
                 yearSelecterFn(year, player)
-                playerParagraph.textContent = player.Name
-            teamParagraph.textContent = player.Team
-            seasonParagraph.textContent = year
+            //     playerParagraph.textContent = player.Name
+            // teamParagraph.textContent = player.Team
+            // seasonParagraph.textContent = year
             ul.style('display', 'none')
+            
             })
            
             const li = ul.selectAll('li').data(function(d){
