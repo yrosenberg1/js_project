@@ -1,8 +1,9 @@
-# MLB Stats
-
+#  ![Favicon](https://github.com/yrosenberg1/js_project/blob/main/src/assets/mlbstatsfavicon/favicon-32x32.png) MLB Stats
 # Overview
 
 MLB Stats is a data visualization project that shows MLB players' statistics. 
+
+![Gif](https://github.com/yrosenberg1/js_project/blob/main/src/assets/js.gif)
 
  MLB Stats allows users to compare different MLB Players stats.
 * It allows viewers to select by year.
