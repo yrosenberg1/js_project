@@ -3,20 +3,15 @@ import {playerData, playerObject} from './search';
 import statsTable from "./statstable"
 import {createPlayerArrays, removeChartFn, removeTable } from "../index"
 import {teamPage} from './teams'
+
 const infoContainer = d3.select('.player-info-container')
-
 const mainContainer = document.querySelector('.main-content-container')
-
-//  console.log("teamParagraph")
-//  console.log(teamParagraph)
 let nameContainer = document.querySelector('.player-info-container')
 let playerInfoUl = nameContainer.querySelector('.player-info-ul')
-  
 let playerParagraph = document.createElement('li');
 let teamParagraph = document.createElement('li');
 playerParagraph.setAttribute('class', 'player-name')
     teamParagraph.setAttribute('class', 'team-name')
-    
     playerInfoUl.appendChild(playerParagraph)
     playerInfoUl.appendChild(teamParagraph)
 const yearSelecterButton = d3.select('.year-selecter-btn')

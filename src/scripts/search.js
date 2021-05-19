@@ -11,6 +11,7 @@ import {inputName, season, importPlayers} from "./year_selector";
 import {teamPlayers} from "./teams"
 
 
+
     let playerParagraph = document.querySelector('.player-name')
     let teamParagraph = document.querySelector('.team-name')
     let seasonParagraph = document.querySelector('.season-name')
@@ -36,6 +37,7 @@ import {teamPlayers} from "./teams"
                
                case 2020:
                     players = Bref2020
+                
                     break;
 
                case 2019:
@@ -54,7 +56,7 @@ import {teamPlayers} from "./teams"
                     players = Bref2016
                     break;
             }
-            console.log(players)
+        
             randomizer(players, season)
             importPlayers(players)
             teamPlayers(players, season)
@@ -78,14 +80,14 @@ import {teamPlayers} from "./teams"
             }
             let selectedName = input
             let playerObject = players.find(player => player.Name === selectedName)
-           console.log("playerObject")
-           console.log(playerObject)
-           
+          
         }
        
     
         filteredPlayersArray = playersNames.filter(name => name.toLowerCase().startsWith(input.toLowerCase()));
         filteredPlayersArray = filteredPlayersArray.map(name => { return name = `<li class="search-bar-li"> ${name} </li>`})
+       
+        
         playerSearchInput.classList.add('active')
     
 
@@ -95,6 +97,7 @@ import {teamPlayers} from "./teams"
       handleList[i].addEventListener('click', function(){
          
          choosePlayer(this)
+         
          searchBar.click()
       });
        
@@ -153,12 +156,8 @@ if (!players.length){
 }
 
 searchBarResults.innerHTML = list;
-
+console.log(searchBarResults)
 }    
-
-
 }
-
-    
 
 export default playerData(); 

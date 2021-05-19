@@ -2,11 +2,10 @@ import * as d3 from 'd3';
 // const tableContainer = d3.select(".table-container")
 const tableContainer = document.querySelector(".table-container")
 // const statsTable = playerObject => {
-//     console.log(playerObject)
+//  
 //     const table = tableContainer.append('table')
 //     const tableHeader = Object.keys(playerObject)
-//     console.log("tableHeader")
-//     console.log(tableHeader)
+//    
 //     const header = table.append('thead').append('tr')
 
 //     header
@@ -16,7 +15,7 @@ const tableContainer = document.querySelector(".table-container")
 //         .append('th')
 //         .attr("class", "headers")
 //         .text( d => d)
-//         console.log(header)
+//       
 
 //     table.selectAll('tr')
 //     .data(playerObject)
@@ -68,7 +67,7 @@ table.appendChild(tableHeaderRow)
                 cellData = 'N/A'
             } else
          cellData = playerObject[key]
-        // if (cellData === null) cellData = "N/A" 
+        
         cell.innerText = cellData
         tr.appendChild(cell)
         
@@ -79,13 +78,11 @@ table.appendChild(tableHeaderRow)
 
 const tableBody = document.createElement('tbody')
 tableBody.setAttribute("class", "table-body")
-console.log("table")
-console.log(table)
+
 table.append(tableBody)
 
 
 
    }
-// }
-// const table=createTable(statsTable) 
+
 export default statsTable;

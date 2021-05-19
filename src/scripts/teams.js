@@ -168,7 +168,7 @@ NlWest
     .attr('value', d => d)
     .on('click', function(d){
     
-    console.log(d.currentTarget.__data__)
+   
     teamSelected = d.currentTarget.__data__
     teamPage(teamSelected)
 })
@@ -183,7 +183,7 @@ NlCentral
     .attr('value', d => d)
     .on('click', function(d){
     
-    // console.log(d.currentTarget.__data__)
+
     teamSelected = d.currentTarget.__data__
     teamPage(teamSelected)
 })
@@ -212,7 +212,7 @@ alWest
     .attr('value', d => d)
     .on('click', function(d){
     
-    console.log(d.currentTarget.__data__)
+   
     teamSelected = d.currentTarget.__data__
     teamPage(teamSelected)
 })
@@ -226,7 +226,7 @@ alCentral
     .attr('value', d => d)
     .on('click', function(d){
     
-    console.log(d.currentTarget.__data__)
+   
     teamSelected = d.currentTarget.__data__
     teamPage(teamSelected)
 })
@@ -242,7 +242,7 @@ alEast
             .attr('value', d => d)
             .on('click', function(d){
             
-            console.log(d.currentTarget.__data__)
+           
             teamSelected = d.currentTarget.__data__
             teamPage(teamSelected)
         })
@@ -333,14 +333,14 @@ export const teamPage = (team) => {
        
       
 const findTeamPlayers = (brefTeam) => {
-    const team = playersArray.filter(players => players.Team === brefTeam)
-    console.log(team)
+    
     removeChartFn();
     removeTable();
     infoContainer
-     .style('display', 'none')
+    .style('display', 'none')
     chartContainer
-     .style('display', 'none')
+    .style('display', 'none')
+    const team = playersArray.filter(players => players.Team === brefTeam)
     createPlayerIndexArrays(team)
 
 }
@@ -375,8 +375,7 @@ const createPlayerIndexArrays = (team) =>{
             teamPlayersArr.push(playersArr)
             playersArr = []
     })
-    console.log("teamPlayersArr")
-    console.log(teamPlayersArr)
+    
     
     render(teamPlayersArr)
 }
@@ -395,7 +394,7 @@ const render = (teamPlayersArr) => {
                 teamPageActive(null)
                 const playerName = this.__data__[0].value
                 const player = playersArray.find(player => player.Name === playerName)
-                console.log(playerName)
+            
                 inputName(playerName)
                 yearSelecterFn(year, player)
             //     playerParagraph.textContent = player.Name

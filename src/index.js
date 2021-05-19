@@ -241,7 +241,7 @@ const update = data => {
     })
     
     update(playerArrayRanking)
-    console.log(playerArrayRanking)
+   
     // lineChart(playerArrayRanking)
     return playerArrayRanking
 }
@@ -266,7 +266,7 @@ export const removeTable = () => {
     .on('click', function(d) {
         removeChartFn() 
         removeTable()
-        console.log(player)
+       
         lineChart(player)
         
     })
