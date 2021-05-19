@@ -1,4 +1,4 @@
-# js_project
+# MLB Stats
 
 # Overview
 
