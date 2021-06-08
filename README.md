@@ -1,4 +1,4 @@
-#  ![Favicon](https://github.com/yrosenberg1/js_project/blob/main/src/assets/mlbstatsfavicon/favicon-32x32.png) MLB Stats
+#  ![Favicon](https://github.com/yrosenberg1/js_project/blob/main/src/assets/mlbstatsfavicon/favicon-32x32.png) [MLB Stats](https://yrosenberg1.github.io/js_project/)
 # Overview
 
 MLB Stats is a data visualization project that shows MLB players' statistics. 
@@ -27,3 +27,6 @@ MLB Stats is a data visualization project that shows MLB players' statistics.
 * Created a bar graph to allow users to visualize and better analyze players’ statistics using D3 to bind data to the DOM for efficient manipulation of the user interface (UI).
 * Implemented multiple ways to look for a player, including a search bar with a dropdown allowing users to search for a specific player, players matching keywords, and by team.
 * Tracked user selection of ranking vs. percentile in a top-level state variable, which can be toggled via an event handler resulting in alternate format of data presented, aided by animation styling to ensure smooth transitions.
+
+
+# [Live Link](https://yrosenberg1.github.io/js_project/)
